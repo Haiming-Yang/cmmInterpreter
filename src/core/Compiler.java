@@ -3,7 +3,6 @@ package core;
 import IO.ConsoleIO;
 import antlr.cmmLexer;
 import antlr.cmmParser;
-import antlr.cmmToken;
 import org.antlr.v4.gui.Trees;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -14,7 +13,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
+import java.util.ArrayList;
 
 
 /**
@@ -47,13 +46,14 @@ public class Compiler {
             if(showLexerResult){
                 lexIo.output("====== lexer analysis result: ======");
                 lexIo.output("Token\tLine\tType");
-                List<cmmToken> tokenList = (List<cmmToken>) lexer.getAllTokens();
+                ArrayList<Token> tokenList = (ArrayList<Token>) lexer.getAllTokens();
                 for(Token token : tokenList){
-
+                //通过类型字典以及getType返回的数字得到具体类型。
                     lexIo.output(token.getText() + "\t" + token.getLine()
                             + "\t" + TokenDictionary.getTokenType(token.getType()));
 
                 }
+                //Reset the stream so that it's in the same state it was when the object was created
                 lexer.reset();
             }
 
@@ -92,6 +92,7 @@ public class Compiler {
     public void setShowAST(boolean showAST) {
         this.showAST = showAST;
     }
+   //主函数
     public static void main(String[] args) throws IOException {
 
         byte[] bytes = Files.readAllBytes(Paths.get("./test.cmm"));

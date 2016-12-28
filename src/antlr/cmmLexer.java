@@ -1,13 +1,11 @@
 // Generated from /Users/steveyyy/Programming/cmmInterpreter/src/antlr/cmm.g4 by ANTLR 4.6
 package antlr;
-import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.*;
+import org.antlr.v4.runtime.atn.ATN;
+import org.antlr.v4.runtime.atn.ATNDeserializer;
+import org.antlr.v4.runtime.atn.LexerATNSimulator;
+import org.antlr.v4.runtime.atn.PredictionContextCache;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class cmmLexer extends Lexer {
@@ -44,6 +42,7 @@ public class cmmLexer extends Lexer {
 		"AddMin", "LBracket", "RBracket", "LBigBracket", "RBigBracket", "LMidBracket", 
 		"RMidBracket", "Assign", "LineEnd", "Comma", "WS", "SL_COMMENT", "MUL_COMMENT"
 	};
+
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -97,6 +96,10 @@ public class cmmLexer extends Lexer {
 
 	@Override
 	public ATN getATN() { return _ATN; }
+
+	public  String[] get_SYMBOLIC_NAMES(){
+		return _SYMBOLIC_NAMES;
+	}
 
 	public static final String _serializedATN =
 		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2\35\u00c9\b\1\4\2"+

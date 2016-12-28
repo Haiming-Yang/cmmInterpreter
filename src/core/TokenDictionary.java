@@ -1,6 +1,6 @@
 package core;
 
-import antlr.cmmParser;
+import antlr.cmmLexer;
 
 /**
  * Created by TangJiong on 2015/11/30.
@@ -13,55 +13,55 @@ public class TokenDictionary {
         String type = null;
 
         switch(typeCode){
-            case cmmParser.If:
-            case cmmParser.Else:
-            case cmmParser.While:
-            case cmmParser.Read:
-            case cmmParser.Write:
-            case cmmParser.Int:
-            case cmmParser.Real:
-            case cmmParser.Break:
+            case cmmLexer.If:
+            case cmmLexer.Else:
+            case cmmLexer.While:
+            case cmmLexer.Read:
+            case cmmLexer.Write:
+            case cmmLexer.Int:
+            case cmmLexer.Real:
+            case cmmLexer.Break:
                 type = "keyword";
                 break;
-            case cmmParser.Ident:
+            case cmmLexer.Ident:
                 type = "identifier";
                 break;
-            case cmmParser.IntConstant:
+            case cmmLexer.IntConstant:
                 type = "int constant";
                 break;
-            case cmmParser.RealConstant:
+            case cmmLexer.RealConstant:
                 type = "real constant";
                 break;
-            case cmmParser.BooleanConstant:
+            case cmmLexer.BooleanConstant:
                 type = "boolean constant";
                 break;
-            case cmmParser.MulDivMod:
-            case cmmParser.CompOp:
-            case cmmParser.AddMin:
+            case cmmLexer.MulDivMod:
+            case cmmLexer.CompOp:
+            case cmmLexer.AddMin:
                 type = "operator";
                 break;
-            case cmmParser.LBracket:
-            case cmmParser.RBracket:
-            case cmmParser.LBigBracket:
-            case cmmParser.RBigBracket:
-            case cmmParser.LMidBracket:
-            case cmmParser.RMidBracket:
+            case cmmLexer.LBracket:
+            case cmmLexer.RBracket:
+            case cmmLexer.LBigBracket:
+            case cmmLexer.RBigBracket:
+            case cmmLexer.LMidBracket:
+            case cmmLexer.RMidBracket:
                 type = "bracket";
                 break;
-            case cmmParser.Assign:
+            case cmmLexer.Assign:
                 type = "assign symbol";
                 break;
-            case cmmParser.LineEnd:
+            case cmmLexer.LineEnd:
                 type = "semicolon";
                 break;
-            case cmmParser.Comma:
+            case cmmLexer.Comma:
                 type = "comma";
                 break;
-            case cmmParser.WS:
+            case cmmLexer.WS:
                 type = "white space";
                 break;
-            case cmmParser.SL_COMMENT:
-            case cmmParser.MUL_COMMENT:
+            case cmmLexer.SL_COMMENT:
+            case cmmLexer.MUL_COMMENT:
                 type = "comment";
                 break;
             default:
