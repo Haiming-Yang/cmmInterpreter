@@ -4,7 +4,7 @@ package core;
  * Created by TangfJiong on 2016/1/2.
  * A generic programming language symbol
  */
-public class Symbol {
+public class Var {
 
     String name;      // All symbols at least have a name
     Type type;
@@ -12,14 +12,14 @@ public class Symbol {
     Object value;
 
 
-    public Symbol(String name) {
+    public Var(String name) {
         this.name = name;
     }
-    public Symbol(String name, Type type) {
+    public Var(String name, Type type) {
         this(name);
         this.type = type;
     }
-    public Symbol(String name, Type type, Object value){
+    public Var(String name, Type type, Object value){
         this(name, type);
         this.value = value;
     }

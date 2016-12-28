@@ -1,4 +1,4 @@
-package GUI;
+package IO;
 
 import core.IOInterface;
 

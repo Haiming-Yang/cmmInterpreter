@@ -1,5 +1,6 @@
 package core;
 
+import IO.ConsoleIO;
 import antlr.cmmLexer;
 import antlr.cmmParser;
 import antlr.cmmToken;
@@ -10,7 +11,11 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+
 
 /**
  * Created by TangJiong on 2015/12/14.
@@ -19,7 +24,7 @@ import java.util.List;
 public class Compiler {
 
     private boolean showLexerResult = true;
-    private boolean showAST = true;
+    private boolean showAST = false;
     private String source;
     private IOInterface lexIo;
     private IOInterface consoleIo;
@@ -87,4 +92,20 @@ public class Compiler {
     public void setShowAST(boolean showAST) {
         this.showAST = showAST;
     }
+    public static void main(String[] args) throws IOException {
+
+        byte[] bytes = Files.readAllBytes(Paths.get("./test.cmm"));
+        String source = new String(bytes);
+        System.out.println(source);
+
+
+        ConsoleIO lexIO = new ConsoleIO();
+        ConsoleIO consoleIO = new ConsoleIO();
+        Compiler test = new Compiler(source,lexIO,consoleIO);
+        test.run();
+
+
+    }
+
+
 }

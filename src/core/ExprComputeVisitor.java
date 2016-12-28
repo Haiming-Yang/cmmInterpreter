@@ -221,7 +221,7 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else if(ctx.value().Ident() != null){ // 表达式里包含变量
             Token varToken = ctx.value().Ident().getSymbol();
             String name = varToken.getText();
-            Symbol varSymbol = currentScope.resolve(name);
+            Var varSymbol = currentScope.resolve(name);
             if(varSymbol != null ){
                 return new ExprReturnVal(varSymbol.getType(), varSymbol.getValue());
             }else{
@@ -243,7 +243,7 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 ExprReturnVal indexValue = indexComputeVisitor.visit(ctx.value().array().expr());
                 varIndex = (Integer) indexValue.getValue();
             }
-            Symbol varSymbol = currentScope.resolve(name);
+            Var varSymbol = currentScope.resolve(name);
             if(varSymbol != null ){
                 if(varSymbol.getType() == Type.tIntArray){ // int数组
 

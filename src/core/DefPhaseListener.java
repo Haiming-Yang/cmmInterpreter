@@ -84,9 +84,9 @@ public class DefPhaseListener extends cmmBaseListener {
                 return;
             }else{
                 if(typeStr.equals("int")){
-                    currentScope.define(new Symbol(name, Type.tIntArray, new int[size]));
+                    currentScope.define(new Var(name, Type.tIntArray, new int[size]));
                 }else{
-                    currentScope.define(new Symbol(name, Type.tRealArray, new double[size]));
+                    currentScope.define(new Var(name, Type.tRealArray, new double[size]));
                 }
             }
 
@@ -110,7 +110,7 @@ public class DefPhaseListener extends cmmBaseListener {
                         + node.getSymbol().getCharPositionInLine());
                 return;
             }else{
-                currentScope.define(new Symbol(node.getSymbol().getText(),
+                currentScope.define(new Var(node.getSymbol().getText(),
                         typeStr.equals("int")? Type.tInt : Type.tReal));
             }
         }
@@ -146,7 +146,7 @@ public class DefPhaseListener extends cmmBaseListener {
                         + token.getCharPositionInLine());
                 return;
             }else{
-                currentScope.define(new Symbol(token.getText(),
+                currentScope.define(new Var(token.getText(),
                         typeStr.equals("int")? Type.tInt : Type.tReal,
                         value.getValue()));
             }

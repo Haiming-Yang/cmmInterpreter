@@ -12,12 +12,12 @@ public interface Scope {
     Scope getEnclosingScope();
 
     /** Define a symbol in the current scope */
-    void define(Symbol sym);
+    void define(Var sym);
 
     /** Determine redundant definition in same scope */
     boolean redundant(String name);
 
     /** Look up name in this scope or in enclosing scope if not here */
-    Symbol resolve(String name);
+    Var resolve(String name);
 
 }

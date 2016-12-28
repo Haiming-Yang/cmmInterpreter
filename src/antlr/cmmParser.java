@@ -1,4 +1,4 @@
-// Generated from /Users/steveyyy/Programming/cmmInterpreter/src/antlr/cmm.g4 by ANTLR 4.5.3
+// Generated from /Users/steveyyy/Programming/cmmInterpreter/src/antlr/cmm.g4 by ANTLR 4.6
 package antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class cmmParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5.3", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.6", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -203,6 +203,7 @@ public class cmmParser extends Parser {
 		enterRule(_localctx, 2, RULE_stmt);
 		try {
 			setState(47);
+			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case Int:
 			case Real:
@@ -429,7 +430,10 @@ public class cmmParser extends Parser {
 			_la = _input.LA(1);
 			if ( !(_la==Int || _la==Real) ) {
 			_errHandler.recoverInline(this);
-			} else {
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
 				consume();
 			}
 			}
@@ -1394,7 +1398,10 @@ public class cmmParser extends Parser {
 			_la = _input.LA(1);
 			if ( !(_la==IntConstant || _la==RealConstant) ) {
 			_errHandler.recoverInline(this);
-			} else {
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
 				consume();
 			}
 			}
@@ -1567,6 +1574,7 @@ public class cmmParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(183);
+			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LBracket:
 				{
@@ -1611,7 +1619,7 @@ public class cmmParser extends Parser {
 			setState(196);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,13,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;

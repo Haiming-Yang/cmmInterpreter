@@ -44,7 +44,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         if(ctx.value().Ident() == null){ // 数组
             Token token = ctx.value().array().Ident().getSymbol();
             String varName = token.getText();
-            Symbol var = currentScope.resolve(varName);
+            Var var = currentScope.resolve(varName);
             if(var == null){
                 io.output("ERROR: no such variable <"
                         + varName
@@ -126,7 +126,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else{ // 普通变量
             Token token = ctx.value().Ident().getSymbol();
             String varName = token.getText();
-            Symbol var = currentScope.resolve(varName);
+            Var var = currentScope.resolve(varName);
             if(var == null){
                 io.output("ERROR: no such variable <"
                         + varName
@@ -163,7 +163,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         if(ctx.Ident() == null){ // 数组
             token = ctx.array().Ident().getSymbol();
             String varName = token.getText();
-            Symbol var = currentScope.resolve(varName);
+            Var var = currentScope.resolve(varName);
             if(var == null){
                 io.output("ERROR: no such variable <"
                         + varName
@@ -209,7 +209,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else{ // 普通变量
             token = ctx.Ident().getSymbol();
             String varName = token.getText();
-            Symbol var = currentScope.resolve(varName);
+            Var var = currentScope.resolve(varName);
             if(var == null){
                 io.output("ERROR: no such variable <"
                         + varName
