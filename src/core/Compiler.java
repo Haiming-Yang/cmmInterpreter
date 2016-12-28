@@ -1,0 +1,90 @@
+package core;
+
+import antlr.cmmLexer;
+import antlr.cmmParser;
+import antlr.cmmToken;
+import org.antlr.v4.gui.Trees;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
+import java.util.List;
+
+/**
+ * Created by TangJiong on 2015/12/14.
+ * The core compiler program based on antlr
+ */
+public class Compiler {
+
+    private boolean showLexerResult = true;
+    private boolean showAST = true;
+    private String source;
+    private IOInterface lexIo;
+    private IOInterface consoleIo;
+
+    public Compiler(String source, IOInterface lexIo, IOInterface consoleIo){
+        this.source = source;
+        this.lexIo = lexIo;
+        this.consoleIo = consoleIo;
+    }
+
+    public void run(){
+
+        try{
+
+            consoleIo.output("====== compiler starting... ======");
+
+            cmmLexer lexer = new cmmLexer(new ANTLRInputStream(source));
+
+            // ===================== 词法分析 =======================
+            if(showLexerResult){
+                lexIo.output("====== lexer analysis result: ======");
+                lexIo.output("Token\tLine\tType");
+                List<cmmToken> tokenList = (List<cmmToken>) lexer.getAllTokens();
+                for(Token token : tokenList){
+
+                    lexIo.output(token.getText() + "\t" + token.getLine()
+                            + "\t" + TokenDictionary.getTokenType(token.getType()));
+
+                }
+                lexer.reset();
+            }
+
+            // =================== 语法分析 =======================
+            CommonTokenStream tokenStream = new CommonTokenStream(lexer);
+            cmmParser parser = new cmmParser(tokenStream);
+            ParseTree parseTree = parser.program();
+            if(showAST){
+                consoleIo.output("====== show tree ======");
+                Trees.inspect(parseTree, parser);
+            }
+            ParseTreeWalker walker = new ParseTreeWalker();
+
+            // 定义阶段，语法分析，将变量放入符号表
+            DefPhaseListener defPhaseListener = new DefPhaseListener(consoleIo);
+            walker.walk(defPhaseListener, parseTree);
+
+            // 引用计算阶段改为visitor的方式
+            RefPhaseVisitor refPhaseVisitor = new RefPhaseVisitor(defPhaseListener.globals,
+                    defPhaseListener.scopes,
+                    consoleIo);
+            refPhaseVisitor.visit(parseTree);
+           // refPhaseVisitor.
+        }catch (Exception e){
+            consoleIo.output(e.getMessage());
+            if(Constant.DEBUG){
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void setShowLexerResult(boolean showLexerResult) {
+        this.showLexerResult = showLexerResult;
+    }
+    public void setShowAST(boolean showAST) {
+        this.showAST = showAST;
+    }
+}
