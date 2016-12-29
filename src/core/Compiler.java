@@ -1,6 +1,7 @@
 package core;
 
 import IO.ConsoleIO;
+import  IO.LLVMIO;
 import antlr.cmmLexer;
 import antlr.cmmParser;
 import org.antlr.v4.gui.Trees;
@@ -23,15 +24,18 @@ import java.util.ArrayList;
 public class Compiler {
 
     private boolean showLexerResult = true;
-    private boolean showAST = false;
+    private boolean showAST = true;
     private String source;
     private IOInterface lexIo;
     private IOInterface consoleIo;
+    private  LLVMIO llvmIO;
 
-    public Compiler(String source, IOInterface lexIo, IOInterface consoleIo){
+    public Compiler(String source, IOInterface lexIo, IOInterface consoleIo,LLVMIO llvmIO){
         this.source = source;
         this.lexIo = lexIo;
         this.consoleIo = consoleIo;
+        this.llvmIO = llvmIO;
+
     }
 
     public void run(){
@@ -68,7 +72,7 @@ public class Compiler {
             ParseTreeWalker walker = new ParseTreeWalker();
 
             // 定义阶段，语法分析，将变量放入符号表
-            DefPhaseListener defPhaseListener = new DefPhaseListener(consoleIo);
+            DefPhaseListener defPhaseListener = new DefPhaseListener(consoleIo,llvmIO);
             walker.walk(defPhaseListener, parseTree);
 
             // 引用计算阶段改为visitor的方式
@@ -79,7 +83,7 @@ public class Compiler {
            // refPhaseVisitor.
         }catch (Exception e){
             consoleIo.output(e.getMessage());
-            if(Constant.DEBUG){
+            if(Constant.LLVM){
                 e.printStackTrace();
             }
         }
@@ -102,7 +106,8 @@ public class Compiler {
 
         ConsoleIO lexIO = new ConsoleIO();
         ConsoleIO consoleIO = new ConsoleIO();
-        Compiler test = new Compiler(source,lexIO,consoleIO);
+        LLVMIO llvmIO = new LLVMIO();
+        Compiler test = new Compiler(source,lexIO,consoleIO,llvmIO);
         test.run();
 
 

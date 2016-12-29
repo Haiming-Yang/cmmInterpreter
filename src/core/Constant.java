@@ -6,6 +6,6 @@ package core;
  */
 public class Constant {
 
-    public static final boolean DEBUG = true;
+    public static final boolean LLVM = true;
 
 }

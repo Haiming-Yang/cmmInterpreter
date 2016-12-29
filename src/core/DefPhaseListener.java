@@ -1,5 +1,6 @@
 package core;
 
+import IO.LLVMIO;
 import antlr.cmmBaseListener;
 import antlr.cmmParser;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -16,9 +17,14 @@ public class DefPhaseListener extends cmmBaseListener {
 
 
     private IOInterface io;
+    private LLVMIO llvmIO;
+    private boolean writeOrNot = false;
+    private boolean readOrNot = false;
 
-    public DefPhaseListener(IOInterface io){
+    public DefPhaseListener(IOInterface io, LLVMIO llvmIO){
+
         this.io = io;
+        this.llvmIO = llvmIO;
     }
 
     // 是一个IdentityHashMap<ParseTree,T>
@@ -35,11 +41,29 @@ public class DefPhaseListener extends cmmBaseListener {
         super.enterProgram(ctx);
         globals = new GlobalScope(null);
         currentScope = globals;
+        if(Constant.LLVM) {
+            llvmIO.output("define i32 @main() #0 {");
+            llvmIO.output("%1 = alloca i32, align 4\n" +
+                    "store i32 0, i32* %1, align 4");
+        }
     }
 
     @Override
     public void exitProgram(cmmParser.ProgramContext ctx) {
         super.exitProgram(ctx);
+        if(Constant.LLVM) {
+            llvmIO.output("ret i32 0");
+            llvmIO.output("}");
+            if(readOrNot){
+               // llvmIO.output("declare i32 @getchar() #1");
+            }
+            if (writeOrNot){
+//                llvmIO.output("declare i32 @printf(i8*, ...) #1");
+//                llvmIO.output("declare i32 @putchar(i32) #1");
+//                llvmIO.output(0,"@.str = private unnamed_addr constant [2 x i8] c\"\\0A\\00\", align 1");
+            }
+            llvmIO.print(llvmIO);
+        }
     }
 
     @Override
@@ -62,16 +86,22 @@ public class DefPhaseListener extends cmmBaseListener {
         // 变量类型，变量列表里的变量类型都是相同的
         String typeStr = ctx.getParent().getChild(0).getText();
 
-        // 数组声明
+        // 数组声明，数组不支持声明时赋值
         for(cmmParser.ArrayContext arrayContext: ctx.array()){
             String name = arrayContext.Ident().getSymbol().getText();
             int size = Integer.parseInt(arrayContext.IntConstant().getText());
-            if(Constant.DEBUG){
-                io.output("DEBUG: <"
-                        + typeStr + " "
-                        + name + " size="
-                        + size
-                        + " >");
+            /**
+             * 数组只声明不赋值的情况下，生成IR Code
+             */
+            if(Constant.LLVM){
+                if(typeStr.equals("int")) {
+                    llvmIO.selfAddSSA();
+                    llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x i32], align 16");
+                }
+                else if (typeStr.equals("real")){
+                    llvmIO.selfAddSSA();
+                    llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x double], align 16");
+                }
             }
             // 在当前作用域内定义，名称，类型，值
             if(currentScope.redundant(name)){
@@ -94,11 +124,20 @@ public class DefPhaseListener extends cmmBaseListener {
 
         // 普通变量声明
         for(TerminalNode node : ctx.getTokens(cmmParser.Ident)){
-            if(Constant.DEBUG){
-                io.output("DEBUG: <"
-                        + typeStr + " "
-                        + node.getSymbol().getText()
-                        + " >");
+            if(Constant.LLVM){
+               if(typeStr.equals("int")) {
+                   llvmIO.selfAddSSA();
+                   llvmIO.output(
+                           "%" + llvmIO.getSSA() + " = " + "alloca i32, align 4");
+               }
+               else if(typeStr.equals("real")){
+                   llvmIO.selfAddSSA();
+                   llvmIO.output(
+                           "%" + llvmIO.getSSA() + " = " + "alloca double, align 8");
+               }
+               else {
+                   io.output("llvm wrong");
+               }
             }
             // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
             if(currentScope.redundant(node.getSymbol().getText())){
@@ -129,13 +168,7 @@ public class DefPhaseListener extends cmmBaseListener {
                         + token.getCharPositionInLine());
                 return;
             }
-            if(Constant.DEBUG){
-                io.output("DEBUG: <"
-                        + typeStr + " "
-                        + token.getText() + " value="
-                        + value.getValue()
-                        + " >");
-            }
+
             // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
             if(currentScope.redundant(token.getText())){
                 io.output("ERROR: redundant definition of <"
@@ -149,11 +182,48 @@ public class DefPhaseListener extends cmmBaseListener {
                 currentScope.define(new Var(token.getText(),
                         typeStr.equals("int")? Type.tInt : Type.tReal,
                         value.getValue()));
+                if(Constant.LLVM){
+                    if(typeStr.equals("int")) {
+                        llvmIO.selfAddSSA();
+                        llvmIO.output(
+                                "%"
+                                        + llvmIO.getSSA()
+                                        + "="
+                                        + "alloca i32, align 4\n"
+                                        + "store i32 "
+                                        + value.getValue()
+                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
+                    }
+                    else {
+                        llvmIO.selfAddSSA();
+                        llvmIO.output(
+                                "%"
+                                        + llvmIO.getSSA()
+                                        + "="
+                                        + "alloca i32, align 4\n"
+                                        + "store double "
+                                        + value.getValue()
+                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
+                    }
+                }
             }
         }
 
     }
+    @Override
+    public void enterWrite_stmt(cmmParser.Write_stmtContext ctx) {
+        if(Constant.LLVM) {
+            writeOrNot = true;
+        }
 
+    }
+    @Override
+    public void enterRead_stmt(cmmParser.Read_stmtContext ctx) {
+        if(Constant.LLVM) {
+            readOrNot = true;
+        }
+
+    }
     @Override
     public void visitErrorNode(ErrorNode node) {
         super.visitErrorNode(node);
