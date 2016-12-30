@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class Compiler {
 
     private boolean showLexerResult = true;
-    private boolean showAST = true;
+    private boolean showAST = false;
     private String source;
     private IOInterface lexIo;
     private IOInterface consoleIo;
@@ -78,15 +78,22 @@ public class Compiler {
             // 引用计算阶段改为visitor的方式
             RefPhaseVisitor refPhaseVisitor = new RefPhaseVisitor(defPhaseListener.globals,
                     defPhaseListener.scopes,
-                    consoleIo);
+                    consoleIo,llvmIO);
             refPhaseVisitor.visit(parseTree);
            // refPhaseVisitor.
+            parser.reset();
+            //=================LLVM IR生成======================
+                LLVMVisitor llvmVisitor = new LLVMVisitor(defPhaseListener.globals,
+                        defPhaseListener.scopes,
+                        consoleIo,llvmIO);
+            llvmVisitor.visit(parseTree);
         }catch (Exception e){
             consoleIo.output(e.getMessage());
             if(Constant.LLVM){
                 e.printStackTrace();
             }
         }
+
 
     }
 
@@ -109,6 +116,7 @@ public class Compiler {
         LLVMIO llvmIO = new LLVMIO();
         Compiler test = new Compiler(source,lexIO,consoleIO,llvmIO);
         test.run();
+        llvmIO.print(llvmIO);
 
 
     }

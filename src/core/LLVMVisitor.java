@@ -5,20 +5,23 @@ import antlr.cmmBaseVisitor;
 import antlr.cmmParser;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * Created by TangJiong on 2016/1/4.
+ * Created by steveyyy on 2016/12/31.
  */
-public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
-
+public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     private IOInterface io;
     private LLVMIO llvmIO;
 
     ParseTreeProperty<Scope> scopes;
     GlobalScope globals;
     Scope currentScope;
+    public LLVMIO getLlvmIO(){
+        return llvmIO;
+    }
 
-    public RefPhaseVisitor(GlobalScope globals, ParseTreeProperty<Scope> scopes, IOInterface io, LLVMIO llvmIO) {
+    public LLVMVisitor(GlobalScope globals, ParseTreeProperty<Scope> scopes, IOInterface io, LLVMIO llvmIO) {
         this.io = io;
         this.globals = globals;
         this.scopes = scopes;
@@ -29,6 +32,11 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
     public ExprReturnVal visitProgram(cmmParser.ProgramContext ctx) {
         currentScope = globals;
         super.visitProgram(ctx);
+                if(Constant.LLVM) {
+            llvmIO.output("define i32 @main() #0 {");
+            llvmIO.output("%1 = alloca i32, align 4\n" +
+                    "store i32 0, i32* %1, align 4");
+        }
         return null;
     }
 
@@ -39,7 +47,99 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         currentScope = currentScope.getEnclosingScope();
         return null;
     }
+    @Override public ExprReturnVal visitVarlist(cmmParser.VarlistContext ctx) {
+        super.visitVarlist(ctx);
+        String typeStr = ctx.getParent().getChild(0).getText();
+        for(cmmParser.ArrayContext arrayContext: ctx.array()){
+            String name = arrayContext.Ident().getSymbol().getText();
+            int size = Integer.parseInt(arrayContext.IntConstant().getText());
 
+             //在当前作用域内定义，名称，类型，值
+
+                /**
+                 * 数组只声明不赋值的情况下，生成IR Code
+                 */
+                if(Constant.LLVM){
+                    if(typeStr.equals("int")) {
+                        llvmIO.selfAddSSA();
+                        llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x i32], align 16");
+                        llvmIO.varMap.put(name,llvmIO.getSSA());
+                    }
+                    else if (typeStr.equals("real")){
+                        llvmIO.selfAddSSA();
+                        llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x double], align 16");
+                        llvmIO.varMap.put(name,llvmIO.getSSA());
+                    }
+                }
+
+
+        }
+
+        // 普通变量声明
+        for(TerminalNode node : ctx.getTokens(cmmParser.Ident)){
+
+
+            //IR生成 普通变量声明
+            if(Constant.LLVM){
+                if(typeStr.equals("int")) {
+                    llvmIO.selfAddSSA();
+                    llvmIO.output(
+                            "%" + llvmIO.getSSA() + " = " + "alloca i32, align 4");
+                    llvmIO.varMap.put(node.getSymbol().getText(),llvmIO.getSSA());
+                }
+                else if(typeStr.equals("real")){
+                    llvmIO.selfAddSSA();
+                    llvmIO.output(
+                            "%" + llvmIO.getSSA() + " = " + "alloca double, align 8");
+                    llvmIO.varMap.put(node.getSymbol().getText(),llvmIO.getSSA());
+                }
+                else {
+                    io.output("llvm wrong");
+                }
+            }
+        }
+
+        // 普通变量在声明时赋值
+        for(cmmParser.Decl_assignContext decl_assignContext : ctx.decl_assign()){
+            Token token = decl_assignContext.Ident().getSymbol();
+            ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
+            ExprReturnVal value = exprComputeVisitor.visit(decl_assignContext.expr());
+
+
+            // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
+
+
+                if(Constant.LLVM){
+                    if(typeStr.equals("int")) {
+                        llvmIO.selfAddSSA();
+                        llvmIO.output(
+                                "%"
+                                        + llvmIO.getSSA()
+                                        + "="
+                                        + "alloca i32, align 4\n"
+                                        + "store i32 "
+                                        + value.getValue()
+                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
+                        llvmIO.varMap.put(token.getText(),llvmIO.getSSA());
+                    }
+                    else {
+                        llvmIO.selfAddSSA();
+                        llvmIO.output(
+                                "%"
+                                        + llvmIO.getSSA()
+                                        + "="
+                                        + "double, align 8\n"
+                                        + "store double "
+                                        + value.getValue()
+                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
+                        llvmIO.varMap.put(token.getText(),llvmIO.getSSA());
+                    }
+                }
+            }
+
+
+        return null;
+    }
     @Override
     public ExprReturnVal visitAssign_stmt(cmmParser.Assign_stmtContext ctx) {
         super.visitAssign_stmt(ctx);
@@ -49,7 +149,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
             String varName = token.getText();
             Var var = currentScope.resolve(varName);
             if(var == null){
-                io.output("ERROR: no such variable <"
+                io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
                         + token.getLine()
@@ -65,7 +165,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     ExprComputeVisitor indexComputeVisitor = new ExprComputeVisitor(currentScope, io);
                     ExprReturnVal indexValue = indexComputeVisitor.visit(ctx.value().array().expr());
                     if(indexValue.getType() != Type.tInt){
-                        io.output("ERROR: invalid index for <"
+                        io.output(" LLVMERROR: invalid index for <"
                                 + varName
                                 + "> in line "
                                 + token.getLine()
@@ -80,7 +180,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     if(0 <= varIndex && varIndex < varArray.length){
                         if(value.getValue() instanceof  Integer){
                             varArray[varIndex] = (Integer) value.getValue();
-                            if(Constant.LLVMDEBUG){
+                            if(Constant.LLVM){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
                                 llvmIO.selfAddSSA();
@@ -91,7 +191,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                 //llvmIO.print(llvmIO);
                             }
                         }else{
-                            io.output("ERROR: unmatched or uncast type during assignment of <"
+                            io.output("LLVMERROR: unmatched or uncast type during assignment of <"
                                     + varName
                                     + "> in line "
                                     + token.getLine()
@@ -100,7 +200,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             return null;
                         }
                     }else{
-                        io.output("ERROR: index out of boundary of array <"
+                        io.output("LLVMERROR: index out of boundary of array <"
                                 + varName
                                 + "> in line "
                                 + token.getLine()
@@ -114,7 +214,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     if(0 <= varIndex && varIndex < varArray.length){
                         if(value.getValue() instanceof  Double){
                             varArray[varIndex] = (Double) value.getValue();
-                            if(Constant.LLVMDEBUG){
+                            if(Constant.LLVM){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
                                 llvmIO.selfAddSSA();
@@ -122,11 +222,11 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                         size+" x double], ["+size+" x double]* %"+
                                         +arraySSACode+", i64 0, i64 "+varIndex);
                                 llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
-                                llvmIO.print(llvmIO);
+                                //llvmIO.print(llvmIO);
                             }
                         }else if(value.getValue() instanceof  Integer){
                             varArray[varIndex] = (Integer) value.getValue();
-                            if(Constant.LLVMDEBUG){
+                            if(Constant.LLVM){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
                                 llvmIO.selfAddSSA();
@@ -134,11 +234,11 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                         size+" x double], ["+size+" x double]* %"+
                                         +arraySSACode+", i64 0, i64 "+varIndex);
                                 llvmIO.output("store double "+ value.getValue()+".000000e+00 , double* %"+llvmIO.getSSA()+", align 8");
-                                llvmIO.print(llvmIO);
+                                //llvmIO.print(llvmIO);
                             }
 
                         }else{
-                            io.output("ERROR: unmatched or uncast type during assignment of <"
+                            io.output("LLVMERROR: unmatched or uncast type during assignment of <"
                                     + varName
                                     + "> in line "
                                     + token.getLine()
@@ -147,7 +247,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             return null;
                         }
                     }else{
-                        io.output("ERROR: index out of boundary of array <"
+                        io.output("LLVMERROR: index out of boundary of array <"
                                 + varName
                                 + "> in line "
                                 + token.getLine()
@@ -162,7 +262,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
             String varName = token.getText();
             Var var = currentScope.resolve(varName);
             if(var == null){
-                io.output("ERROR: no such variable <"
+                io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
                         + token.getLine()
@@ -174,7 +274,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 if(var.getType() != value.getType()){
                     Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
-                    io.output("ERROR: unmatched type on two side of <"
+                    io.output("LLVMERROR: unmatched type on two side of <"
                             + assign.getText()
                             + "> in line "
                             + assign.getLine()
@@ -183,24 +283,27 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     return null;
                 }else{ // 新值覆盖旧值
                     var.setValue(value.getValue());
-                    if(Constant.LLVMDEBUG){
+                    if(Constant.LLVM){
                         int varSSACode = llvmIO.varMap.get(varName);
                         //int size = varArray.length;
                         if(var.getType() == Type.tInt){
-                        llvmIO.output("store i32 "+ value.getValue()+" , i32* %"+llvmIO.getSSA()+", align 4");
-                        llvmIO.print(llvmIO);}
+                            llvmIO.output("store i32 "+ value.getValue()+" , i32* %"+llvmIO.getSSA()+", align 4");
+                           // llvmIO.print(llvmIO);
+                            }
                         else if(var.getType() == Type.tReal){
                             if(value.getValue() instanceof  Double){
-                            llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
-                            llvmIO.print(llvmIO);}
+                                llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
+                                //llvmIO.print(llvmIO);
+                                }
                             else{
                                 llvmIO.output("store double "+ value.getValue()+" .000000e+00, double* %"+llvmIO.getSSA()+", align 8");
-                                llvmIO.print(llvmIO);}
-                            }
+                                //llvmIO.print(llvmIO);
+                                }
                         }
                     }
                 }
             }
+        }
 
 
         return null;
@@ -215,7 +318,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
             String varName = token.getText();
             Var var = currentScope.resolve(varName);
             if(var == null){
-                io.output("ERROR: no such variable <"
+                io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
                         + token.getLine()
@@ -232,7 +335,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     int in = Integer.parseInt(io.input());
                     varArray[varIndex] = in;
                 }else{
-                    io.output("ERROR: index out of boundary of array <"
+                    io.output("LLVMERROR: index out of boundary of array <"
                             + varName
                             + "> in line "
                             + token.getLine()
@@ -248,7 +351,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     Double in = Double.parseDouble(io.input());
                     varArray[varIndex] = in;
                 }else{
-                    io.output("ERROR: index out of boundary of array <"
+                    io.output("LLVMERROR: index out of boundary of array <"
                             + varName
                             + "> in line "
                             + token.getLine()
@@ -261,7 +364,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
             String varName = token.getText();
             Var var = currentScope.resolve(varName);
             if(var == null){
-                io.output("ERROR: no such variable <"
+                io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
                         + token.getLine()
@@ -285,8 +388,8 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         super.visitWrite_stmt(ctx);
         ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
         Object value = exprComputeVisitor.visit(ctx.expr()).getValue();
-        io.output(value);
-        if(Constant.LLVMDEBUG){
+       // io.output(value);
+        if(Constant.LLVM){
             if(value instanceof  Integer) {
                 llvmIO.selfAddSSA();
                 llvmIO.output(
@@ -306,11 +409,11 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         "%"
                                 + llvmIO.getSSA()
                                 + "="
-                                + "double, align 8\n"
+                                + " alloca double, align 8\n"
                                 + "store double "
                                 + value
-                                + ", i32* %" + llvmIO.getSSA() + ", align 4");
-                llvmIO.print(llvmIO);
+                                + ", double* %" + llvmIO.getSSA() + ", align 8");
+                //llvmIO.print(llvmIO);
             }
         }
         return null;
