@@ -33,9 +33,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         currentScope = globals;
         super.visitProgram(ctx);
                 if(Constant.LLVM) {
-            llvmIO.output("define i32 @main() #0 {");
-            llvmIO.output("%1 = alloca i32, align 4\n" +
-                    "store i32 0, i32* %1, align 4");
+            llvmIO.output("ret i32 0\n" +
+                    "}" );
         }
         return null;
     }
@@ -401,7 +400,10 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                 + value
                                 + ", i32* %" + llvmIO.getSSA() + ", align 4");
                 // llvmIO.varMap.put(node.getSymbol().getText(),llvmIO.getSSA());
-
+                llvmIO.selfAddSSA();
+                llvmIO.output("%"+llvmIO.getSSA()+" = load i32, i32* %"+(llvmIO.getSSA()-1)+", align 4");
+                llvmIO.selfAddSSA();
+                llvmIO.output("%"+llvmIO.getSSA()+" = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.0, i32 0, i32 0), i32 %"+(llvmIO.getSSA()-1)+")");
             }
             else {
                 llvmIO.selfAddSSA();

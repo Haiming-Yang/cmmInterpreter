@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35247498-5f30-4a66-82e4-79a721072108" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Compiler.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Compiler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Constant.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Constant.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/DefPhaseListener.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/DefPhaseListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/RefPhaseVisitor.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/RefPhaseVisitor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Compiler.java" afterPath="$PROJECT_DIR$/src/core/Compiler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Constant.java" afterPath="$PROJECT_DIR$/src/core/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/DefPhaseListener.java" afterPath="$PROJECT_DIR$/src/core/DefPhaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/RefPhaseVisitor.java" afterPath="$PROJECT_DIR$/src/core/RefPhaseVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/LLVMVisitor.java" afterPath="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.cmm" afterPath="$PROJECT_DIR$/test.cmm" />
     </list>
     <ignored path="cmmInterpreter.iws" />
@@ -42,7 +34,7 @@
       <file leaf-file-name="LLVMIO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="165">
               <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -54,7 +46,7 @@
       <file leaf-file-name="GlobalScope.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/GlobalScope.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="120">
               <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
               <folding>
                 <element signature="e#160#161#0" expanded="true" />
@@ -67,12 +59,10 @@
       <file leaf-file-name="LLVMVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6210">
-              <caret line="414" column="78" selection-start-line="414" selection-start-column="78" selection-end-line="414" selection-end-column="78" />
+            <state relative-caret-position="180">
+              <caret line="403" column="105" selection-start-line="403" selection-start-column="105" selection-end-line="403" selection-end-column="105" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#503#504#0" expanded="true" />
-                <element signature="e#532#533#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +81,8 @@
       <file leaf-file-name="DefPhaseListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/DefPhaseListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="218" column="0" selection-start-line="89" selection-start-column="8" selection-end-line="218" selection-end-column="0" />
+            <state relative-caret-position="3000">
+              <caret line="209" column="37" selection-start-line="209" selection-start-column="37" selection-end-line="209" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,7 +93,7 @@
       <file leaf-file-name="cmmBaseVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
+            <state relative-caret-position="810">
               <caret line="54" column="96" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="96" />
               <folding />
             </state>
@@ -113,17 +103,17 @@
       <file leaf-file-name="ExprComputeVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/ExprComputeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
+            <state relative-caret-position="3090">
               <caret line="210" column="38" selection-start-line="210" selection-start-column="38" selection-end-line="210" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compiler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Compiler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Compiler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
+            <state relative-caret-position="1500">
               <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -135,18 +125,18 @@
       <file leaf-file-name="RefPhaseVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/RefPhaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="1170">
               <caret line="82" column="51" selection-start-line="82" selection-start-column="51" selection-end-line="82" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.cmm" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test.cmm" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.cmm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+            <state relative-caret-position="75">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -188,12 +178,12 @@
         <option value="$PROJECT_DIR$/src/core/TokenDictionary.java" />
         <option value="$PROJECT_DIR$/src/core/LocalScope.java" />
         <option value="$PROJECT_DIR$/src/IO/LLVMIO.java" />
-        <option value="$PROJECT_DIR$/test.cmm" />
         <option value="$PROJECT_DIR$/src/core/DefPhaseListener.java" />
         <option value="$PROJECT_DIR$/src/core/Constant.java" />
         <option value="$PROJECT_DIR$/src/core/RefPhaseVisitor.java" />
         <option value="$PROJECT_DIR$/src/core/Compiler.java" />
         <option value="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
+        <option value="$PROJECT_DIR$/test.cmm" />
       </list>
     </option>
   </component>
@@ -211,8 +201,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="179" />
-    <option name="y" value="52" />
+    <option name="x" value="181" />
+    <option name="y" value="55" />
     <option name="width" value="1440" />
     <option name="height" value="810" />
   </component>
@@ -241,6 +231,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -352,8 +344,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -865,15 +855,17 @@
       <workItem from="1482976826478" duration="20663000" />
       <workItem from="1483068329114" duration="5249000" />
       <workItem from="1483100931888" duration="6218000" />
+      <workItem from="1483117696251" duration="99000" />
+      <workItem from="1483152280621" duration="2259000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59842000" />
+    <option name="totallyTimeSpent" value="62200000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="179" y="52" width="1440" height="810" extended-state="0" />
-    <editor active="true" />
+    <frame x="181" y="55" width="1440" height="810" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -888,7 +880,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -988,7 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -996,7 +987,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#160#161#0" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1060,7 +1054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1172,7 +1165,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="3" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,7 +1209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="45" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +1223,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1247,27 +1236,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/ExprComputeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
+        <state relative-caret-position="3090">
           <caret line="210" column="38" selection-start-line="210" selection-start-column="38" selection-end-line="210" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.cmm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/GlobalScope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="120">
           <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding>
             <element signature="e#160#161#0" expanded="true" />
             <element signature="e#197#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/RefPhaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="82" column="51" selection-start-line="82" selection-start-column="51" selection-end-line="82" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="96" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1280,36 +1287,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/RefPhaseVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/core/Compiler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="82" column="51" selection-start-line="82" selection-start-column="51" selection-end-line="82" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="54" column="96" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/DefPhaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="218" column="0" selection-start-line="89" selection-start-column="8" selection-end-line="218" selection-end-column="0" />
+        <state relative-caret-position="1500">
+          <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
+    <entry file="file://$PROJECT_DIR$/src/core/DefPhaseListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        <state relative-caret-position="3000">
+          <caret line="209" column="37" selection-start-line="209" selection-start-column="37" selection-end-line="209" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1318,23 +1309,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6210">
-          <caret line="414" column="78" selection-start-line="414" selection-start-column="78" selection-end-line="414" selection-end-column="78" />
+        <state relative-caret-position="180">
+          <caret line="403" column="105" selection-start-line="403" selection-start-column="105" selection-end-line="403" selection-end-column="105" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Compiler.java">
+    <entry file="file://$PROJECT_DIR$/test.cmm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

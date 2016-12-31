@@ -1,5 +1,9 @@
-real a[5];
-real b;
-b = 6.0;
+int a[5];
+int b =2;
+//real b;
+//b = 6.0;
 a[3] = 2;
-write(a[3]+b);
+if(a[3]<10){
+write(b);
+}
+
