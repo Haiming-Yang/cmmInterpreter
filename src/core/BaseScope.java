@@ -4,8 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by TangJiong on 2016/1/2.
- * 作用域基类
+ * Created by steveyyy on 2016/12/29.
  */
 public abstract class BaseScope implements Scope {
 

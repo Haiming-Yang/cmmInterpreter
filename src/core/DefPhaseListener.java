@@ -10,8 +10,7 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * Created by TangJiong on 2016/1/2.
- * 变量定义阶段的监听器
+ * Created by steveyyy on 2016/12/29.
  */
 public class DefPhaseListener extends cmmBaseListener {
 

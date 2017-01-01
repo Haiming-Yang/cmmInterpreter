@@ -1,8 +1,7 @@
 package core;
 
 /**
- * Created by TangJiong on 2016/1/2.
- * 作用域接口
+ * Created by steveyyy on 2016/12/29.
  */
 public interface Scope {
 

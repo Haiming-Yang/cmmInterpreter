@@ -1,8 +1,7 @@
 package core;
 
 /**
- * Created by TangJiong on 2016/1/4.
- * 表达式返回值
+ * Created by steveyyy on 2016/12/29.
  */
 public class ExprReturnVal {
 

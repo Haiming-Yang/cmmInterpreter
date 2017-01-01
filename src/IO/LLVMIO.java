@@ -11,9 +11,28 @@ import java.util.Map;
  */
 public class LLVMIO implements IOInterface {
 
-    public ArrayList<String> llvmIRList = new ArrayList<String>();
+    private ArrayList<String> llvmIRList = new ArrayList<String>();
+    private ArrayList<String> inputList = new ArrayList<String>();
+    private int i = -1;
+    public void addInputList (String i){
+
+            inputList.add(i);
+
+    }
+    public String getInput(){
+        i++;
+        return inputList.get(i);
+
+    }
     public Map<String,Integer> varMap = new LinkedHashMap<String,Integer>();
     private  int SSACode = 1;
+    private boolean writeOrNot = false;
+    public void  setWriteOrNot(boolean flag){
+        this.writeOrNot = flag;
+    }
+    public boolean getWriteOrNot(){
+        return  this.writeOrNot;
+    }
     public void setSSA(int a){
         SSACode = a;
 

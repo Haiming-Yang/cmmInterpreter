@@ -16,10 +16,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-
 /**
- * Created by TangJiong on 2015/12/14.
- * The core compiler program based on antlr
+ * Created by steveyyy on 2016/12/29.
  */
 public class Compiler {
 

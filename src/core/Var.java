@@ -1,8 +1,7 @@
 package core;
 
 /**
- * Created by TangfJiong on 2016/1/2.
- * A generic programming language symbol
+ * Created by steveyyy on 2016/12/29.
  */
 public class Var {
 

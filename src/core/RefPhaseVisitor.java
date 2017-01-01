@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 /**
- * Created by TangJiong on 2016/1/4.
+ * Created by steveyyy on 2016/12/29.
  */
 public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
@@ -229,7 +229,9 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
-                    int in = Integer.parseInt(io.input());
+                    String inS = io.input();
+                    int in = Integer.parseInt(inS);
+                    llvmIO.addInputList(inS);
                     varArray[varIndex] = in;
                 }else{
                     io.output("ERROR: index out of boundary of array <"
@@ -245,7 +247,9 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
-                    Double in = Double.parseDouble(io.input());
+                    String inS = io.input();
+                    Double in = Double.parseDouble(inS);
+                    llvmIO.addInputList(inS);
                     varArray[varIndex] = in;
                 }else{
                     io.output("ERROR: index out of boundary of array <"
@@ -269,10 +273,14 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 return null;
             }
             if(var.getType() == Type.tInt){
-                int in = Integer.parseInt(io.input());
+                String inS =  io.input();
+                int in = Integer.parseInt(inS);
+                llvmIO.addInputList(inS);
                 var.setValue(in);
             }else{
-                Double in = Double.parseDouble(io.input());
+                String inS = io.input();
+                Double in = Double.parseDouble(inS);
+                llvmIO.addInputList(inS);
                 var.setValue(in);
             }
 

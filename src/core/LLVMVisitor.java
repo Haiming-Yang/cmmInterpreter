@@ -32,9 +32,17 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     public ExprReturnVal visitProgram(cmmParser.ProgramContext ctx) {
         currentScope = globals;
         super.visitProgram(ctx);
-                if(Constant.LLVM) {
+        if(Constant.LLVM) {
             llvmIO.output("ret i32 0\n" +
                     "}" );
+            llvmIO.output(0,"define i32 @main() #0 {\n"+
+                    "%1 = alloca i32, align 4\n" +
+                    "store i32 0, i32* %1, align 4");
+        }
+        if(llvmIO.getWriteOrNot()){
+            llvmIO.output(0,"@.str = private unnamed_addr constant [4 x i8] c\"%d\\0A\\00\", align 1");
+            llvmIO.output("declare i32 @printf(i8*, ...) #1");
+
         }
         return null;
     }
@@ -331,7 +339,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
-                    int in = Integer.parseInt(io.input());
+                    int in = Integer.parseInt(llvmIO.getInput());
                     varArray[varIndex] = in;
                 }else{
                     io.output("LLVMERROR: index out of boundary of array <"
@@ -347,7 +355,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
-                    Double in = Double.parseDouble(io.input());
+                    Double in = Double.parseDouble(llvmIO.getInput());
                     varArray[varIndex] = in;
                 }else{
                     io.output("LLVMERROR: index out of boundary of array <"
@@ -371,10 +379,10 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 return null;
             }
             if(var.getType() == Type.tInt){
-                int in = Integer.parseInt(io.input());
+                int in = Integer.parseInt(llvmIO.getInput());
                 var.setValue(in);
             }else{
-                Double in = Double.parseDouble(io.input());
+                Double in = Double.parseDouble(llvmIO.getInput());
                 var.setValue(in);
             }
 
@@ -385,6 +393,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     @Override
     public ExprReturnVal visitWrite_stmt(cmmParser.Write_stmtContext ctx) {
         super.visitWrite_stmt(ctx);
+        boolean flag = true;
+        llvmIO.setWriteOrNot(flag);
         ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
         Object value = exprComputeVisitor.visit(ctx.expr()).getValue();
        // io.output(value);
@@ -403,7 +413,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 llvmIO.selfAddSSA();
                 llvmIO.output("%"+llvmIO.getSSA()+" = load i32, i32* %"+(llvmIO.getSSA()-1)+", align 4");
                 llvmIO.selfAddSSA();
-                llvmIO.output("%"+llvmIO.getSSA()+" = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.0, i32 0, i32 0), i32 %"+(llvmIO.getSSA()-1)+")");
+                llvmIO.output("%"+llvmIO.getSSA()+" = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i32 %"+(llvmIO.getSSA()-1)+")");
             }
             else {
                 llvmIO.selfAddSSA();

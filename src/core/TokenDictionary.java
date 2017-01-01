@@ -3,8 +3,7 @@ package core;
 import antlr.cmmLexer;
 
 /**
- * Created by TangJiong on 2015/11/30.
- * A dictionary for translating token type
+ * Created by steveyyy on 2016/12/29.
  */
 public class TokenDictionary {
 

@@ -1,9 +1,10 @@
 int a[5];
-int b =2;
+int b ;
 //real b;
 //b = 6.0;
-a[3] = 2;
+read(a[3]);
 if(a[3]<10){
+read(b);
 write(b);
 }
 
