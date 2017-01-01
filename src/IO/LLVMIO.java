@@ -13,26 +13,52 @@ public class LLVMIO implements IOInterface {
 
     private ArrayList<String> llvmIRList = new ArrayList<String>();
     private ArrayList<String> inputList = new ArrayList<String>();
-    private int i = -1;
+    private int inputIndex = -1;
     public void addInputList (String i){
 
             inputList.add(i);
 
     }
     public String getInput(){
-        i++;
-        return inputList.get(i);
+        inputIndex++;
+        return inputList.get(inputIndex);
 
     }
     public Map<String,Integer> varMap = new LinkedHashMap<String,Integer>();
     private  int SSACode = 1;
     private boolean writeOrNot = false;
+
     public void  setWriteOrNot(boolean flag){
         this.writeOrNot = flag;
     }
     public boolean getWriteOrNot(){
         return  this.writeOrNot;
     }
+
+    private boolean intOrNot = false;
+    public void  setIntOrNot( ){
+        this.intOrNot = true;
+    }
+    public boolean getIntOrNot(){
+        return  this.intOrNot;
+    }
+
+    private boolean doubleOrNot = false;
+    public void  setDoubleOrNot( ){
+        this.doubleOrNot = true;
+    }
+    public boolean getDoubleOrNot(){
+        return  this.doubleOrNot;
+    }
+
+    private  boolean everWriteInt = false;
+    public void setEverWriteInt(){this.everWriteInt = true;};
+    public boolean getEverWriteInt(){return  this.everWriteInt;};
+
+    private  boolean everWriteDouble = false;
+    public void setEverWriteDouble(){this.everWriteDouble = true;};
+    public boolean getEverWriteDouble(){return  this.everWriteDouble;};
+
     public void setSSA(int a){
         SSACode = a;
 

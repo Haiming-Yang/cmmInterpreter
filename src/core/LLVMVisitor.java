@@ -40,7 +40,23 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     "store i32 0, i32* %1, align 4");
         }
         if(llvmIO.getWriteOrNot()){
-            llvmIO.output(0,"@.str = private unnamed_addr constant [4 x i8] c\"%d\\0A\\00\", align 1");
+            if(llvmIO.getIntOrNot()) {
+                if(!llvmIO.getEverWriteInt()) {
+                    llvmIO.setEverWriteInt();
+                    llvmIO.output(0, "@.str.0 = private unnamed_addr constant [4 x i8] c\"%d\\0A\\00\", align 1");
+                };
+            }
+            if(llvmIO.getDoubleOrNot()) {
+                if(!llvmIO.getEverWriteDouble()){
+                    llvmIO.setEverWriteDouble();
+                    if(llvmIO.getEverWriteInt()) {
+                        llvmIO.output(1, "@.str.1 = private unnamed_addr constant [5 x i8] c\"%lf\\0A\\00\", align 1");
+                    }
+                    else {
+                        llvmIO.output(0, "@.str.1 = private unnamed_addr constant [5 x i8] c\"%lf\\0A\\00\", align 1");
+                    }
+                }
+            }
             llvmIO.output("declare i32 @printf(i8*, ...) #1");
 
         }
@@ -400,6 +416,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
        // io.output(value);
         if(Constant.LLVM){
             if(value instanceof  Integer) {
+                llvmIO.setIntOrNot();
                 llvmIO.selfAddSSA();
                 llvmIO.output(
                         "%"
@@ -413,9 +430,10 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 llvmIO.selfAddSSA();
                 llvmIO.output("%"+llvmIO.getSSA()+" = load i32, i32* %"+(llvmIO.getSSA()-1)+", align 4");
                 llvmIO.selfAddSSA();
-                llvmIO.output("%"+llvmIO.getSSA()+" = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i32 %"+(llvmIO.getSSA()-1)+")");
+                llvmIO.output("%"+llvmIO.getSSA()+" = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.0, i32 0, i32 0), i32 %"+(llvmIO.getSSA()-1)+")");
             }
             else {
+                llvmIO.setDoubleOrNot();
                 llvmIO.selfAddSSA();
                 llvmIO.output(
                         "%"
@@ -425,6 +443,10 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                 + "store double "
                                 + value
                                 + ", double* %" + llvmIO.getSSA() + ", align 8");
+                llvmIO.selfAddSSA();
+                llvmIO.output("%"+llvmIO.getSSA()+" = load double, double* %"+(llvmIO.getSSA()-1)+", align 8");
+                llvmIO.selfAddSSA();
+                llvmIO.output("%"+llvmIO.getSSA()+"= call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.1, i32 0, i32 0), double %"+(llvmIO.getSSA()-1)+")");
                 //llvmIO.print(llvmIO);
             }
         }
