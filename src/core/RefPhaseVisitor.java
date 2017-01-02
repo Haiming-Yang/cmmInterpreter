@@ -78,8 +78,15 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     int[] varArray = (int[]) var.getValue();
                     // 数组越界检查
                     if(0 <= varIndex && varIndex < varArray.length){
-                        if(value.getValue() instanceof  Integer){
-                            varArray[varIndex] = (Integer) value.getValue();
+                        //这地方的判断感觉没用，强制转成int就行了
+                        if((value.getValue() instanceof  Integer)||((value.getValue() instanceof  Double))){
+                            if(value.getValue() instanceof Integer) {
+                                varArray[varIndex] = (int)value.getValue();
+                            }
+                            else{
+                                Double n = (Double) value.getValue();
+                                varArray[varIndex] = n.intValue();
+                            }
                             if(Constant.LLVMDEBUG){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
@@ -112,8 +119,14 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     double[] varArray = (double[]) var.getValue();
                     // 数组越界检查
                     if(0 <= varIndex && varIndex < varArray.length){
-                        if(value.getValue() instanceof  Double){
-                            varArray[varIndex] = (Double) value.getValue();
+                        if(value.getValue() instanceof  Double||value.getValue() instanceof  Integer){
+                            if(value.getValue() instanceof Double) {
+                                varArray[varIndex] = (Double) value.getValue();
+                            }
+                            else{
+                                int n = (Integer) value.getValue();
+                                varArray[varIndex] = n;
+                            }
                             if(Constant.LLVMDEBUG){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
@@ -124,19 +137,6 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                 llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
                                 llvmIO.print(llvmIO);
                             }
-                        }else if(value.getValue() instanceof  Integer){
-                            varArray[varIndex] = (Integer) value.getValue();
-                            if(Constant.LLVMDEBUG){
-                                int arraySSACode = llvmIO.varMap.get(varName);
-                                int size = varArray.length;
-                                llvmIO.selfAddSSA();
-                                llvmIO.output("%"+llvmIO.getSSA()+" = getelementptr inbounds ["+
-                                        size+" x double], ["+size+" x double]* %"+
-                                        +arraySSACode+", i64 0, i64 "+varIndex);
-                                llvmIO.output("store double "+ value.getValue()+".000000e+00 , double* %"+llvmIO.getSSA()+", align 8");
-                                llvmIO.print(llvmIO);
-                            }
-
                         }else{
                             io.output("ERROR: unmatched or uncast type during assignment of <"
                                     + varName
@@ -172,7 +172,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
                 ExprReturnVal value = exprComputeVisitor.visit(ctx.expr());
 
-                if(var.getType() != value.getType()){
+                if( !(value.getType()== Type.tInt || value.getType() == Type.tReal)){
                     Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
                     io.output("ERROR: unmatched type on two side of <"
                             + assign.getText()
@@ -182,22 +182,27 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             + assign.getCharPositionInLine());
                     return null;
                 }else{ // 新值覆盖旧值
-                    var.setValue(value.getValue());
-                    if(Constant.LLVMDEBUG){
-                        int varSSACode = llvmIO.varMap.get(varName);
-                        //int size = varArray.length;
-                        if(var.getType() == Type.tInt){
-                        llvmIO.output("store i32 "+ value.getValue()+" , i32* %"+llvmIO.getSSA()+", align 4");
-                        llvmIO.print(llvmIO);}
-                        else if(var.getType() == Type.tReal){
-                            if(value.getValue() instanceof  Double){
-                            llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
-                            llvmIO.print(llvmIO);}
-                            else{
-                                llvmIO.output("store double "+ value.getValue()+" .000000e+00, double* %"+llvmIO.getSSA()+", align 8");
-                                llvmIO.print(llvmIO);}
-                            }
+                    if(var.getType() == Type.tInt){
+                        if(value.getValue() instanceof  Integer){
+                            var.setValue(value.getValue());
                         }
+                        else{
+                            Double n = (Double) value.getValue();
+                            var.setValue(n.intValue());
+                        }
+                    }
+                    else{
+                            if(value.getValue() instanceof Integer){
+                                Integer n = (Integer) value.getValue();
+                                Double dn = n.doubleValue();
+                                var.setValue(dn);
+                            }
+                            else{
+                                Double n = (Double)value.getValue();
+                                var.setValue(n);
+                            }
+                    }
+
                     }
                 }
             }

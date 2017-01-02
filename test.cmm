@@ -1,11 +1,13 @@
-int a[5];
-real b ;
-//real b;
-//b = 6.0;
-read(a[3]);
-if(a[3]<10){
-read(b);
-write(b);
-write(a[3]);
-}
 
+int a = 4;
+int j;
+while(a > 0)
+{
+   j = a-1;
+   while(j > 0)
+   {
+      write(j);
+      j = j-1;
+   }
+   a = a -1;
+}

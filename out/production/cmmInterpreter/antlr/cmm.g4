@@ -1,10 +1,4 @@
-/**
- * grammar for cmm language
- * By
- * 唐炯 2013302580231,
- * 张子谦 2013302580241,
- * 易晓轩 2013302580221
- */
+
 grammar cmm;
 
 // ============文法定义==============================
@@ -54,12 +48,17 @@ Write : 'write' ;
 Int : 'int' ;
 Real : 'real' ;
 Break : 'break' ;
+BooleanConstant : 'true' | 'false' ;
 // 标识符
-Ident :  [a-zA-Z]([a-zA-Z] | '_' | [0-9])*;
+Ident :  [a-zA-Z]|[a-zA-Z_][a-zA-Z0-9_]*[a-zA-Z0-9] ;
 // 常量
 IntConstant : '0' | [1-9][0-9]*;  //带符号，base 10，暂未实现base 16
-RealConstant : IntConstant('.'([0-9]+))? ; //带符号
-BooleanConstant : 'true' | 'false' ;
+RealConstant : IntConstant'.'(([0-9]+))? ; //带符号
+HexConstant :('0x'|'0X')(('0'..'9')|('A'..'F')|('a'..'f'))+('.')(('0'..'9')|('A'..'F')|('a'..'f'))
+    |('0x'|'0X')(('0'..'9')|('A'..'F')|('a'..'f'))+
+	;
+
+
 // 操作符
 CompOp : '<=' | '>=' | '>' | '<' | '!=' | '==' | '<>' ; //比较
 MulDivMod : '*' | '/' | '%'; //一级运算 乘除取模

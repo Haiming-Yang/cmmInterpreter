@@ -11,6 +11,7 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
     Scope currentScope;
     private IOInterface io;
+    private Arith arith;
 
     public ExprComputeVisitor(Scope currentScope, IOInterface io) {
         this.currentScope = currentScope;
@@ -26,8 +27,11 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
         ExprReturnVal returnVal = new ExprReturnVal();
         if(leftValue.getType() == Type.tReal && rightValue.getType() == Type.tInt){
             returnVal.setType(Type.tReal);
+            Integer iRv = (Integer)rightValue.getValue();
+            Double dRv = iRv.doubleValue();
+            Double dLv = (Double)leftValue.getValue();
             if(op.getText().equals("*")){
-                returnVal.setValue((Double)leftValue.getValue() * (Integer) rightValue.getValue());
+                returnVal.setValue(arith.mul(dLv,dRv));
             }else if(op.getText().equals("/")){
                 if((Integer)rightValue.getValue() == 0){
                     io.output("ERROR: divide zero"
@@ -37,35 +41,32 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             + op.getCharPositionInLine());
                     return null;
                 }
-                returnVal.setValue((Double)leftValue.getValue() / (Integer) rightValue.getValue());
-            }else if(op.getText().equals("%")){
-                if((Integer)rightValue.getValue() == 0){
-                    io.output("ERROR: divide zero"
-                            + " in line "
-                            + op.getLine()
-                            +":"
-                            + op.getCharPositionInLine());
-                    return null;
-                }
-                returnVal.setValue((Double)leftValue.getValue() % (Integer) rightValue.getValue());
+                returnVal.setValue(arith.div(dLv,dRv));
             }
         }else if(leftValue.getType() == Type.tInt && rightValue.getType() == Type.tReal){
             returnVal.setType(Type.tReal);
+            Integer iLv = (Integer)leftValue.getValue();
+            Double dLv = iLv.doubleValue();
+            Double dRv = (Double)rightValue.getValue();
             if(op.getText().equals("*")){
-                returnVal.setValue((Integer)leftValue.getValue() * (Double) rightValue.getValue());
+                returnVal.setValue(arith.mul(dLv,dRv));
             }else if(op.getText().equals("/")){
-                returnVal.setValue((Integer)leftValue.getValue() / (Double) rightValue.getValue());
-            }else if(op.getText().equals("%")){
-                returnVal.setValue((Integer)leftValue.getValue() % (Double) rightValue.getValue());
+                if(dRv == 0){
+                    io.output("ERROR: divide zero"
+                            + " in line "
+                            + op.getLine()
+                            +":"
+                            + op.getCharPositionInLine());
+                    return null;
+                }
+                returnVal.setValue(arith.div(dLv,dRv));
             }
         }else if(leftValue.getType() == Type.tReal && rightValue.getType() == Type.tReal){
             returnVal.setType(Type.tReal);
             if(op.getText().equals("*")){
-                returnVal.setValue((Double)leftValue.getValue() * (Double) rightValue.getValue());
+                returnVal.setValue(arith.mul((Double)leftValue.getValue(),(Double) rightValue.getValue()));
             }else if(op.getText().equals("/")){
-                returnVal.setValue((Double)leftValue.getValue() / (Double) rightValue.getValue());
-            }else if(op.getText().equals("%")){
-                returnVal.setValue((Double)leftValue.getValue() % (Double) rightValue.getValue());
+                returnVal.setValue(arith.div((Double)leftValue.getValue(),(Double) rightValue.getValue()));
             }
         }else if(leftValue.getType() == Type.tInt && rightValue.getType() == Type.tInt){
             returnVal.setType(Type.tInt);
@@ -81,16 +82,6 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     return null;
                 }
                 returnVal.setValue((Integer)leftValue.getValue() / (Integer) rightValue.getValue());
-            }else if(op.getText().equals("%")){
-                if((Integer)rightValue.getValue() == 0){
-                    io.output("ERROR: divide zero"
-                            + " in line "
-                            + op.getLine()
-                            +":"
-                            + op.getCharPositionInLine());
-                    return null;
-                }
-                returnVal.setValue((Integer)leftValue.getValue() % (Integer) rightValue.getValue());
             }
         }else{
             io.output("ERROR: unmatched or uncast type on two side of <"
@@ -114,24 +105,30 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
         // 运算时做类型检查
         if(leftValue.getType() == Type.tReal && rightValue.getType() == Type.tInt){
             returnVal.setType(Type.tReal);
+            Integer iRv = (Integer)rightValue.getValue();
+            Double dRv = iRv.doubleValue();
+            Double dLv = (Double)leftValue.getValue();
             if(op.getText().equals("+")){
-                returnVal.setValue((Double)leftValue.getValue() + (Integer) rightValue.getValue());
+                returnVal.setValue(arith.add(dLv,dRv));
             }else{
-                returnVal.setValue((Double)leftValue.getValue() - (Integer) rightValue.getValue());
+                returnVal.setValue(arith.sub(dLv,dRv));
             }
         }else if(leftValue.getType() == Type.tInt && rightValue.getType() == Type.tReal){
             returnVal.setType(Type.tReal);
+            Integer iLv = (Integer)leftValue.getValue();
+            Double dLv = iLv.doubleValue();
+            Double dRv = (Double)rightValue.getValue();
             if(op.getText().equals("+")){
-                returnVal.setValue((Integer)leftValue.getValue() + (Double) rightValue.getValue());
+                returnVal.setValue(arith.add(dLv,dRv));
             }else{
-                returnVal.setValue((Integer)leftValue.getValue() - (Double) rightValue.getValue());
+                returnVal.setValue(arith.sub(dLv,dRv));
             }
         }else if(leftValue.getType() == Type.tReal && rightValue.getType() == Type.tReal){
             returnVal.setType(Type.tReal);
             if(op.getText().equals("+")){
-                returnVal.setValue((Double)leftValue.getValue() + (Double) rightValue.getValue());
+                returnVal.setValue(arith.add((Double)leftValue.getValue(),(Double) rightValue.getValue()));
             }else{
-                returnVal.setValue((Double)leftValue.getValue() - (Double) rightValue.getValue());
+                returnVal.setValue(arith.sub((Double)leftValue.getValue(),(Double) rightValue.getValue()));
             }
         }else if(leftValue.getType() == Type.tInt && rightValue.getType() == Type.tInt){
             returnVal.setType(Type.tInt);
@@ -193,9 +190,19 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 returnVal.setValue((Double)leftValue.getValue() <= (Double) rightValue.getValue());
             }
         }else if(op.getText().equals("==")){
-            returnVal.setValue(leftValue.getValue() == rightValue.getValue());
+            //returnVal.setValue(leftValue.getValue() == rightValue.getValue());
+            if(leftValue.getType() == Type.tInt){
+                returnVal.setValue((Integer)leftValue.getValue() == (Integer)rightValue.getValue());
+            }else {
+                returnVal.setValue(((Double)leftValue.getValue()).equals((Double)rightValue.getValue()));
+            }
         }else if(op.getText().equals("!=") || op.getText().equals("<>")){
-            returnVal.setValue(leftValue.getValue() != rightValue.getValue());
+            //returnVal.setValue(leftValue.getValue() != rightValue.getValue());
+            if(leftValue.getType() == Type.tInt){
+                returnVal.setValue((Integer)leftValue.getValue() != (Integer)rightValue.getValue());
+            }else {
+                returnVal.setValue(!(((Double)leftValue.getValue()).equals((Double) rightValue.getValue())));
+            }
         }
 
         return returnVal;

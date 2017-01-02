@@ -295,16 +295,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
                 ExprReturnVal value = exprComputeVisitor.visit(ctx.expr());
 
-                if(var.getType() != value.getType()){
-                    Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
-                    io.output("LLVMERROR: unmatched type on two side of <"
-                            + assign.getText()
-                            + "> in line "
-                            + assign.getLine()
-                            +":"
-                            + assign.getCharPositionInLine());
-                    return null;
-                }else{ // 新值覆盖旧值
+
                     var.setValue(value.getValue());
                     if(Constant.LLVM){
                         int varSSACode = llvmIO.varMap.get(varName);
@@ -319,12 +310,12 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                 //llvmIO.print(llvmIO);
                                 }
                             else{
-                                llvmIO.output("store double "+ value.getValue()+" .000000e+00, double* %"+llvmIO.getSSA()+", align 8");
+                                llvmIO.output("store double "+ value.getValue()+".000000e+00, double* %"+llvmIO.getSSA()+", align 8");
                                 //llvmIO.print(llvmIO);
                                 }
                         }
                     }
-                }
+
             }
         }
 
