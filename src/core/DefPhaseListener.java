@@ -115,15 +115,15 @@ public class DefPhaseListener extends cmmBaseListener {
             Token token = decl_assignContext.Ident().getSymbol();
             ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
             ExprReturnVal value = exprComputeVisitor.visit(decl_assignContext.expr());
-            if(value.getType() != (typeStr.equals("int")? Type.tInt : Type.tReal)){
-                io.output("ERROR: unmatched type on two side of <"
-                        + token.getText()
-                        + "> in line "
-                        + token.getLine()
-                        +":"
-                        + token.getCharPositionInLine());
-                return;
-            }
+//            if(value.getType() != (typeStr.equals("int")? Type.tInt : Type.tReal)){
+//                io.output("ERROR: unmatched type on two side of <"
+//                        + token.getText()
+//                        + "> in line "
+//                        + token.getLine()
+//                        +":"
+//                        + token.getCharPositionInLine());
+//                return;
+//            }
 
             // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
             if(currentScope.redundant(token.getText())){
@@ -135,6 +135,49 @@ public class DefPhaseListener extends cmmBaseListener {
                         + token.getCharPositionInLine());
                 return;
             }else{
+                if(typeStr.equals("int")){
+                    if(value.getValue() instanceof Integer){
+                        currentScope.define(new Symbol(token.getText(),
+                                Type.tInt ,
+                                value.getValue()));
+
+                    }
+                    else{
+                        Double d =(Double)value.getValue();
+                        Integer i = d.intValue();
+                        currentScope.define(new Symbol(token.getText(),
+                                Type.tInt, i));
+                        io.output("WARNING: 精度衰减 <"
+                                + token.getText()
+                                + "> in same scope in line "
+                                + token.getLine()
+                                + ":"
+                                + token.getCharPositionInLine());
+
+                    }
+                }
+                else {
+                    if(typeStr.equals("real")){
+                        currentScope.define(new Symbol(token.getText(),
+                                Type.tReal,
+                                value.getValue()));
+
+                    }
+                    else {
+                        Integer i = (Integer)value.getValue();
+                        Double d = i.doubleValue();
+                        currentScope.define(new Symbol(token.getText(),
+                                Type.tReal,
+                                i));
+                        io.output("WARNING: 隐式转换 <"
+                                + token.getText()
+                                + "> in same scope in line "
+                                + token.getLine()
+                                + ":"
+                                + token.getCharPositionInLine());
+
+                    }
+                }
                 currentScope.define(new Symbol(token.getText(),
                         typeStr.equals("int")? Type.tInt : Type.tReal,
                         value.getValue()));

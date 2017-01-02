@@ -139,6 +139,12 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             else{
                                 Double n = (Double) value.getValue();
                                 varArray[varIndex] = n.intValue();
+                                io.output("WARNING: 精度衰减 <"
+                                        + token.getText()
+                                        + "> in line "
+                                        + token.getLine()
+                                        +":"
+                                        + token.getCharPositionInLine());
                             }
                             if(Constant.LLVMDEBUG){
                                 int arraySSACode = llvmIO.varMap.get(varName);
@@ -179,17 +185,14 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             else{
                                 int n = (Integer) value.getValue();
                                 varArray[varIndex] = n;
+                                io.output("WARNING: 隐式转换 <"
+                                        + token.getText()
+                                        + "> in line "
+                                        + token.getLine()
+                                        +":"
+                                        + token.getCharPositionInLine());
                             }
-                            if(Constant.LLVMDEBUG){
-                                int arraySSACode = llvmIO.varMap.get(varName);
-                                int size = varArray.length;
-                                llvmIO.selfAddSSA();
-                                llvmIO.output("%"+llvmIO.getSSA()+" = getelementptr inbounds ["+
-                                        size+" x double], ["+size+" x double]* %"+
-                                        +arraySSACode+", i64 0, i64 "+varIndex);
-                                llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
-                                llvmIO.print(llvmIO);
-                            }
+
                         }else{
                             io.output("ERROR: unmatched or uncast type during assignment of <"
                                     + varName
@@ -227,7 +230,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 if( !(value.getType()== Type.tInt || value.getType() == Type.tReal)){
                     Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
-                    io.output("ERROR: unmatched type on two side of <"
+                    io.output("ERROR: wrong value <"
                             + assign.getText()
                             + "> in line "
                             + assign.getLine()
@@ -242,6 +245,12 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         else{
                             Double n = (Double) value.getValue();
                             symbol.setValue(n.intValue());
+                            io.output("WARNING: 精度衰减 <"
+                                    + token.getText()
+                                    + "> in line "
+                                    + token.getLine()
+                                    +":"
+                                    + token.getCharPositionInLine());
                         }
                     }
                     else{
@@ -249,6 +258,12 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                                 Integer n = (Integer) value.getValue();
                                 Double dn = n.doubleValue();
                                 symbol.setValue(dn);
+                                io.output("WARNING: 隐式转换 <"
+                                        + token.getText()
+                                        + "> in line "
+                                        + token.getLine()
+                                        +":"
+                                        + token.getCharPositionInLine());
                             }
                             else{
                                 Double n = (Double)value.getValue();

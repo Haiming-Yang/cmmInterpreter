@@ -153,56 +153,51 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
         Token op = ctx.CompOp().getSymbol(); // 比较符
         ExprReturnVal leftValue = visit(ctx.expr(0)); // 左值
         ExprReturnVal rightValue = visit(ctx.expr(1)); // 右值
-        // 运算时做类型检查
-        if(leftValue.getType() != rightValue.getType()){
-            io.output("ERROR: unmatched type on two side of <"
-                    + op.getText()
-                    + "> in line "
-                    + op.getLine()
-                    +":"
-                    + op.getCharPositionInLine());
-            return null;
+        Double dLv ;
+        Double dRv;
+        if(leftValue.getValue() instanceof Integer){
+            if(rightValue.getValue() instanceof  Integer){
+                Integer iLv = (Integer)leftValue.getValue();
+                dLv = iLv.doubleValue();
+                Integer iRv = (Integer)rightValue.getValue();
+                dRv = iRv.doubleValue();
+            }
+            else {
+                Integer iLv = (Integer)leftValue.getValue();
+                dLv = iLv.doubleValue();
+                dRv = (Double) rightValue.getValue();
+            }
+        }
+        else{
+            if(rightValue.getValue() instanceof  Double){
+                //Integer iLv = (Integer)leftValue.getValue();
+                dLv = (Double) leftValue.getValue();
+                //Integer iRv = (Integer)rightValue.getValue();
+                dRv = (Double)rightValue.getValue();
+            }
+            else {
+                //Integer iLv = (Integer)leftValue.getValue();
+                dLv = (Double) leftValue.getValue();
+                Integer iRv = (Integer)rightValue.getValue();
+                dRv = iRv.doubleValue();
+            }
         }
         ExprReturnVal returnVal = new ExprReturnVal();
         returnVal.setType(Type.tBool);
         if(op.getText().equals(">")){
-            if(leftValue.getType() == Type.tInt){
-                returnVal.setValue((Integer)leftValue.getValue() > (Integer)rightValue.getValue());
-            }else {
-                returnVal.setValue((Double)leftValue.getValue() > (Double) rightValue.getValue());
-            }
+            returnVal.setValue(dLv > dRv);
         }else if(op.getText().equals("<")){
-            if(leftValue.getType() == Type.tInt){
-                returnVal.setValue((Integer)leftValue.getValue() < (Integer)rightValue.getValue());
-            }else {
-                returnVal.setValue((Double)leftValue.getValue() < (Double) rightValue.getValue());
-            }
+            returnVal.setValue(dLv <  dRv);
         }else if(op.getText().equals(">=")){
-            if(leftValue.getType() == Type.tInt){
-                returnVal.setValue((Integer)leftValue.getValue() >= (Integer)rightValue.getValue());
-            }else {
-                returnVal.setValue((Double)leftValue.getValue() >= (Double) rightValue.getValue());
-            }
+            returnVal.setValue(dLv >=  dRv);
         }else if(op.getText().equals("<=")){
-            if(leftValue.getType() == Type.tInt){
-                returnVal.setValue((Integer)leftValue.getValue() <= (Integer)rightValue.getValue());
-            }else {
-                returnVal.setValue((Double)leftValue.getValue() <= (Double) rightValue.getValue());
-            }
+            returnVal.setValue(dLv <=  dRv);
         }else if(op.getText().equals("==")){
             //returnVal.setValue(leftValue.getValue() == rightValue.getValue());
-            if(leftValue.getType() == Type.tInt){
-                returnVal.setValue((Integer)leftValue.getValue() == (Integer)rightValue.getValue());
-            }else {
-                returnVal.setValue(((Double)leftValue.getValue()).equals((Double)rightValue.getValue()));
-            }
+            returnVal.setValue(dLv.equals(dRv) );
         }else if(op.getText().equals("!=") || op.getText().equals("<>")){
             //returnVal.setValue(leftValue.getValue() != rightValue.getValue());
-            if(leftValue.getType() == Type.tInt){
-                returnVal.setValue((Integer)leftValue.getValue() != (Integer)rightValue.getValue());
-            }else {
-                returnVal.setValue(!(((Double)leftValue.getValue()).equals((Double) rightValue.getValue())));
-            }
+            returnVal.setValue(!dLv.equals(dRv));
         }
 
         return returnVal;
