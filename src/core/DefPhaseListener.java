@@ -17,8 +17,7 @@ public class DefPhaseListener extends cmmBaseListener {
 
     private IOInterface io;
     private LLVMIO llvmIO;
-    private boolean writeOrNot = false;
-    private boolean readOrNot = false;
+
 
     public DefPhaseListener(IOInterface io, LLVMIO llvmIO){
 
@@ -40,29 +39,13 @@ public class DefPhaseListener extends cmmBaseListener {
         super.enterProgram(ctx);
         globals = new GlobalScope(null);
         currentScope = globals;
-//        if(Constant.LLVM) {
-//            llvmIO.output("define i32 @main() #0 {");
-//            llvmIO.output("%1 = alloca i32, align 4\n" +
-//                    "store i32 0, i32* %1, align 4");
-//        }
+
     }
 
     @Override
     public void exitProgram(cmmParser.ProgramContext ctx) {
         super.exitProgram(ctx);
-////        if(Constant.LLVM) {
-////            llvmIO.output("ret i32 0");
-////            llvmIO.output("}");
-////            if(readOrNot){
-////               // llvmIO.output("declare i32 @getchar() #1");
-////            }
-////            if (writeOrNot){
-//////                llvmIO.output("declare i32 @printf(i8*, ...) #1");
-//////                llvmIO.output("declare i32 @putchar(i32) #1");
-//////                llvmIO.output(0,"@.str = private unnamed_addr constant [2 x i8] c\"\\0A\\00\", align 1");
-////            }
-////            //llvmIO.print(llvmIO);
-//        }
+
     }
 
     @Override
@@ -89,22 +72,7 @@ public class DefPhaseListener extends cmmBaseListener {
         for(cmmParser.ArrayContext arrayContext: ctx.array()){
             String name = arrayContext.Ident().getSymbol().getText();
             int size = Integer.parseInt(arrayContext.IntConstant().getText());
-            /**
-             * 数组只声明不赋值的情况下，生成IR Code
-             */
-//            if(Constant.LLVM){
-//                if(typeStr.equals("int")) {
-//                    llvmIO.selfAddSSA();
-//                    llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x i32], align 16");
-//                    llvmIO.varMap.put(name,llvmIO.getSSA());
-//                }
-//                else if (typeStr.equals("real")){
-//                    llvmIO.selfAddSSA();
-//                    llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x double], align 16");
-//                    llvmIO.varMap.put(name,llvmIO.getSSA());
-//                }
-//            }
-            // 在当前作用域内定义，名称，类型，值
+
             if(currentScope.redundant(name)){
                 io.output("ERROR: redundant definition of <"
                         + name
@@ -115,9 +83,9 @@ public class DefPhaseListener extends cmmBaseListener {
                 return;
             }else{
                 if(typeStr.equals("int")){
-                    currentScope.define(new Var(name, Type.tIntArray, new int[size]));
+                    currentScope.define(new Symbol(name, Type.tIntArray, new int[size]));
                 }else{
-                    currentScope.define(new Var(name, Type.tRealArray, new double[size]));
+                    currentScope.define(new Symbol(name, Type.tRealArray, new double[size]));
                 }
             }
 
@@ -136,27 +104,10 @@ public class DefPhaseListener extends cmmBaseListener {
                         + node.getSymbol().getCharPositionInLine());
                 return;
             }else{
-                currentScope.define(new Var(node.getSymbol().getText(),
+                currentScope.define(new Symbol(node.getSymbol().getText(),
                         typeStr.equals("int")? Type.tInt : Type.tReal));
             }
-            //IR生成 普通变量声明
-//            if(Constant.LLVM){
-//                if(typeStr.equals("int")) {
-//                    llvmIO.selfAddSSA();
-//                    llvmIO.output(
-//                            "%" + llvmIO.getSSA() + " = " + "alloca i32, align 4");
-//                    llvmIO.varMap.put(node.getSymbol().getText(),llvmIO.getSSA());
-//                }
-//                else if(typeStr.equals("real")){
-//                    llvmIO.selfAddSSA();
-//                    llvmIO.output(
-//                            "%" + llvmIO.getSSA() + " = " + "alloca double, align 8");
-//                    llvmIO.varMap.put(node.getSymbol().getText(),llvmIO.getSSA());
-//                }
-//                else {
-//                    io.output("llvm wrong");
-//                }
-//            }
+
         }
 
         // 普通变量在声明时赋值
@@ -184,35 +135,10 @@ public class DefPhaseListener extends cmmBaseListener {
                         + token.getCharPositionInLine());
                 return;
             }else{
-                currentScope.define(new Var(token.getText(),
+                currentScope.define(new Symbol(token.getText(),
                         typeStr.equals("int")? Type.tInt : Type.tReal,
                         value.getValue()));
-//                if(Constant.LLVM){
-//                    if(typeStr.equals("int")) {
-//                        llvmIO.selfAddSSA();
-//                        llvmIO.output(
-//                                "%"
-//                                        + llvmIO.getSSA()
-//                                        + "="
-//                                        + "alloca i32, align 4\n"
-//                                        + "store i32 "
-//                                        + value.getValue()
-//                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
-//                        llvmIO.varMap.put(token.getText(),llvmIO.getSSA());
-//                    }
-//                    else {
-//                        llvmIO.selfAddSSA();
-//                        llvmIO.output(
-//                                "%"
-//                                        + llvmIO.getSSA()
-//                                        + "="
-//                                        + "double, align 8\n"
-//                                        + "store double "
-//                                        + value.getValue()
-//                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
-//                        llvmIO.varMap.put(token.getText(),llvmIO.getSSA());
-//                    }
-//                }
+
             }
         }
 

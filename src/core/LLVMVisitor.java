@@ -170,8 +170,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         if(ctx.value().Ident() == null){ // 数组
             Token token = ctx.value().array().Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -197,8 +197,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     }
                     varIndex = (Integer) indexValue.getValue();
                 }
-                if(var.getType() == Type.tIntArray){ // int数组
-                    int[] varArray = (int[]) var.getValue();
+                if(symbol.getType() == Type.tIntArray){ // int数组
+                    int[] varArray = (int[]) symbol.getValue();
                     // 数组越界检查
                     if(0 <= varIndex && varIndex < varArray.length){
                         if(value.getValue() instanceof  Integer){
@@ -232,7 +232,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     }
 
                 }else{ // double数组
-                    double[] varArray = (double[]) var.getValue();
+                    double[] varArray = (double[]) symbol.getValue();
                     // 数组越界检查
                     if(0 <= varIndex && varIndex < varArray.length){
                         if(value.getValue() instanceof  Double){
@@ -283,8 +283,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else{ // 普通变量
             Token token = ctx.value().Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -296,15 +296,15 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 ExprReturnVal value = exprComputeVisitor.visit(ctx.expr());
 
 
-                    var.setValue(value.getValue());
+                    symbol.setValue(value.getValue());
                     if(Constant.LLVM){
                         int varSSACode = llvmIO.varMap.get(varName);
                         //int size = varArray.length;
-                        if(var.getType() == Type.tInt){
+                        if(symbol.getType() == Type.tInt){
                             llvmIO.output("store i32 "+ value.getValue()+" , i32* %"+llvmIO.getSSA()+", align 4");
                            // llvmIO.print(llvmIO);
                             }
-                        else if(var.getType() == Type.tReal){
+                        else if(symbol.getType() == Type.tReal){
                             if(value.getValue() instanceof  Double){
                                 llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
                                 //llvmIO.print(llvmIO);
@@ -330,8 +330,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         if(ctx.Ident() == null){ // 数组
             token = ctx.array().Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -340,9 +340,9 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 return null;
             }
             int varIndex = Integer.parseInt(ctx.array().IntConstant().getText());
-            if(var.getType() == Type.tIntArray){ // int数组
+            if(symbol.getType() == Type.tIntArray){ // int数组
 
-                int[] varArray = (int[]) var.getValue();
+                int[] varArray = (int[]) symbol.getValue();
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
@@ -358,7 +358,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
             }else{ // double数组
 
-                double[] varArray = (double[]) var.getValue();
+                double[] varArray = (double[]) symbol.getValue();
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
@@ -376,8 +376,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else{ // 普通变量
             token = ctx.Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -385,12 +385,12 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         + ":" + token.getCharPositionInLine());
                 return null;
             }
-            if(var.getType() == Type.tInt){
+            if(symbol.getType() == Type.tInt){
                 int in = Integer.parseInt(llvmIO.getInput());
-                var.setValue(in);
+                symbol.setValue(in);
             }else{
                 Double in = Double.parseDouble(llvmIO.getInput());
-                var.setValue(in);
+                symbol.setValue(in);
             }
 
         }

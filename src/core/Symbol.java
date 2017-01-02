@@ -3,7 +3,7 @@ package core;
 /**
  * Created by steveyyy on 2016/12/29.
  */
-public class Var {
+public class Symbol {
 
     String name;      // All symbols at least have a name
     Type type;
@@ -11,14 +11,14 @@ public class Var {
     Object value;
 
 
-    public Var(String name) {
+    public Symbol(String name) {
         this.name = name;
     }
-    public Var(String name, Type type) {
+    public Symbol(String name, Type type) {
         this(name);
         this.type = type;
     }
-    public Var(String name, Type type, Object value){
+    public Symbol(String name, Type type, Object value){
         this(name, type);
         this.value = value;
     }

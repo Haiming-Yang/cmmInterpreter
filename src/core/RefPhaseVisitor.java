@@ -41,14 +41,67 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
+    public ExprReturnVal visitDecl_assign(cmmParser.Decl_assignContext ctx) {
+        Token token = ctx.Ident().getSymbol();
+        String varName = token.getText();
+        Symbol symbol = currentScope.resolve(varName);
+        if(symbol == null){
+            io.output("ERROR: no such variable <"
+                    + varName
+                    + "> in line "
+                    + token.getLine()
+                    + ":" + token.getCharPositionInLine());
+            return null;
+        }else{ // 变量存在
+            ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
+            ExprReturnVal value = exprComputeVisitor.visit(ctx.expr());
+
+            if( !(value.getType()== Type.tInt || value.getType() == Type.tReal)){
+                Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
+                io.output("ERROR: unmatched type on two side of <"
+                        + assign.getText()
+                        + "> in line "
+                        + assign.getLine()
+                        +":"
+                        + assign.getCharPositionInLine());
+                return null;
+            }else{ // 新值覆盖旧值
+                if(symbol.getType() == Type.tInt){
+                    if(value.getValue() instanceof  Integer){
+                        symbol.setValue(value.getValue());
+                    }
+                    else{
+                        Double n = (Double) value.getValue();
+                        symbol.setValue(n.intValue());
+                    }
+                }
+                else{
+                    if(value.getValue() instanceof Integer){
+                        Integer n = (Integer) value.getValue();
+                        Double dn = n.doubleValue();
+                        symbol.setValue(dn);
+                    }
+                    else{
+                        Double n = (Double)value.getValue();
+                        symbol.setValue(n);
+                    }
+                }
+
+            }
+        }
+
+        return visitChildren(ctx);
+    }
+
+    @Override
     public ExprReturnVal visitAssign_stmt(cmmParser.Assign_stmtContext ctx) {
         super.visitAssign_stmt(ctx);
 
         if(ctx.value().Ident() == null){ // 数组
             Token token = ctx.value().array().Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -74,8 +127,8 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     }
                     varIndex = (Integer) indexValue.getValue();
                 }
-                if(var.getType() == Type.tIntArray){ // int数组
-                    int[] varArray = (int[]) var.getValue();
+                if(symbol.getType() == Type.tIntArray){ // int数组
+                    int[] varArray = (int[]) symbol.getValue();
                     // 数组越界检查
                     if(0 <= varIndex && varIndex < varArray.length){
                         //这地方的判断感觉没用，强制转成int就行了
@@ -116,7 +169,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                     }
 
                 }else{ // double数组
-                    double[] varArray = (double[]) var.getValue();
+                    double[] varArray = (double[]) symbol.getValue();
                     // 数组越界检查
                     if(0 <= varIndex && varIndex < varArray.length){
                         if(value.getValue() instanceof  Double||value.getValue() instanceof  Integer){
@@ -160,8 +213,8 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else{ // 普通变量
             Token token = ctx.value().Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -182,24 +235,24 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             + assign.getCharPositionInLine());
                     return null;
                 }else{ // 新值覆盖旧值
-                    if(var.getType() == Type.tInt){
+                    if(symbol.getType() == Type.tInt){
                         if(value.getValue() instanceof  Integer){
-                            var.setValue(value.getValue());
+                            symbol.setValue(value.getValue());
                         }
                         else{
                             Double n = (Double) value.getValue();
-                            var.setValue(n.intValue());
+                            symbol.setValue(n.intValue());
                         }
                     }
                     else{
                             if(value.getValue() instanceof Integer){
                                 Integer n = (Integer) value.getValue();
                                 Double dn = n.doubleValue();
-                                var.setValue(dn);
+                                symbol.setValue(dn);
                             }
                             else{
                                 Double n = (Double)value.getValue();
-                                var.setValue(n);
+                                symbol.setValue(n);
                             }
                     }
 
@@ -218,8 +271,8 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         if(ctx.Ident() == null){ // 数组
             token = ctx.array().Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -228,9 +281,9 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 return null;
             }
             int varIndex = Integer.parseInt(ctx.array().IntConstant().getText());
-            if(var.getType() == Type.tIntArray){ // int数组
+            if(symbol.getType() == Type.tIntArray){ // int数组
 
-                int[] varArray = (int[]) var.getValue();
+                int[] varArray = (int[]) symbol.getValue();
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
@@ -248,7 +301,7 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
             }else{ // double数组
 
-                double[] varArray = (double[]) var.getValue();
+                double[] varArray = (double[]) symbol.getValue();
 
                 // 数组越界检查
                 if(0 <= varIndex && varIndex < varArray.length){
@@ -268,8 +321,8 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else{ // 普通变量
             token = ctx.Ident().getSymbol();
             String varName = token.getText();
-            Var var = currentScope.resolve(varName);
-            if(var == null){
+            Symbol symbol = currentScope.resolve(varName);
+            if(symbol == null){
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -277,16 +330,16 @@ public class RefPhaseVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         + ":" + token.getCharPositionInLine());
                 return null;
             }
-            if(var.getType() == Type.tInt){
+            if(symbol.getType() == Type.tInt){
                 String inS =  io.input();
                 int in = Integer.parseInt(inS);
                 llvmIO.addInputList(inS);
-                var.setValue(in);
+                symbol.setValue(in);
             }else{
                 String inS = io.input();
                 Double in = Double.parseDouble(inS);
                 llvmIO.addInputList(inS);
-                var.setValue(in);
+                symbol.setValue(in);
             }
 
         }

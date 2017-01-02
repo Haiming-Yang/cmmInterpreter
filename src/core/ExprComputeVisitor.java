@@ -227,9 +227,9 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else if(ctx.value().Ident() != null){ // 表达式里包含变量
             Token varToken = ctx.value().Ident().getSymbol();
             String name = varToken.getText();
-            Var varSymbol = currentScope.resolve(name);
-            if(varSymbol != null ){
-                return new ExprReturnVal(varSymbol.getType(), varSymbol.getValue());
+            Symbol symbolSymbol = currentScope.resolve(name);
+            if(symbolSymbol != null ){
+                return new ExprReturnVal(symbolSymbol.getType(), symbolSymbol.getValue());
             }else{
                 io.output("ERROR: no such variable <"
                         + name
@@ -249,11 +249,11 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 ExprReturnVal indexValue = indexComputeVisitor.visit(ctx.value().array().expr());
                 varIndex = (Integer) indexValue.getValue();
             }
-            Var varSymbol = currentScope.resolve(name);
-            if(varSymbol != null ){
-                if(varSymbol.getType() == Type.tIntArray){ // int数组
+            Symbol symbolSymbol = currentScope.resolve(name);
+            if(symbolSymbol != null ){
+                if(symbolSymbol.getType() == Type.tIntArray){ // int数组
 
-                    int[] varArray = (int[]) varSymbol.getValue();
+                    int[] varArray = (int[]) symbolSymbol.getValue();
 
                     // 数组越界检查
                     if(varIndex < varArray.length){
@@ -269,7 +269,7 @@ public class ExprComputeVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 }else{ // double数组
 
-                    double[] varArray = (double[]) varSymbol.getValue();
+                    double[] varArray = (double[]) symbolSymbol.getValue();
 
                     // 数组越界检查
                     if(varIndex < varArray.length){
