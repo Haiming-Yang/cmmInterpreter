@@ -200,15 +200,25 @@ public interface cmmListener extends ParseTreeListener {
 	 */
 	void exitAssign_stmt(cmmParser.Assign_stmtContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link cmmParser#value}.
+	 * Enter a parse tree produced by {@link cmmParser#var}.
 	 * @param ctx the parse tree
 	 */
-	void enterValue(cmmParser.ValueContext ctx);
+	void enterVar(cmmParser.VarContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link cmmParser#value}.
+	 * Exit a parse tree produced by {@link cmmParser#var}.
 	 * @param ctx the parse tree
 	 */
-	void exitValue(cmmParser.ValueContext ctx);
+	void exitVar(cmmParser.VarContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link cmmParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool(cmmParser.BoolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link cmmParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool(cmmParser.BoolContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link cmmParser#array}.
 	 * @param ctx the parse tree
@@ -220,27 +230,15 @@ public interface cmmListener extends ParseTreeListener {
 	 */
 	void exitArray(cmmParser.ArrayContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link cmmParser#constant}.
+	 * Enter a parse tree produced by {@link cmmParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterConstant(cmmParser.ConstantContext ctx);
+	void enterValue(cmmParser.ValueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link cmmParser#constant}.
+	 * Exit a parse tree produced by {@link cmmParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitConstant(cmmParser.ConstantContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code SignExpr}
-	 * labeled alternative in {@link cmmParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterSignExpr(cmmParser.SignExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code SignExpr}
-	 * labeled alternative in {@link cmmParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitSignExpr(cmmParser.SignExprContext ctx);
+	void exitValue(cmmParser.ValueContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ValueExpr}
 	 * labeled alternative in {@link cmmParser#expr}.
@@ -253,6 +251,18 @@ public interface cmmListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValueExpr(cmmParser.ValueExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code BoolExpr}
+	 * labeled alternative in {@link cmmParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolExpr(cmmParser.BoolExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code BoolExpr}
+	 * labeled alternative in {@link cmmParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolExpr(cmmParser.BoolExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code MulDivExpr}
 	 * labeled alternative in {@link cmmParser#expr}.
@@ -289,6 +299,18 @@ public interface cmmListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCompareExpr(cmmParser.CompareExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code VarExpr}
+	 * labeled alternative in {@link cmmParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarExpr(cmmParser.VarExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code VarExpr}
+	 * labeled alternative in {@link cmmParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarExpr(cmmParser.VarExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ParenthesesExpr}
 	 * labeled alternative in {@link cmmParser#expr}.

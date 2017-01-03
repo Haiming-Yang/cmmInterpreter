@@ -232,13 +232,25 @@ public class cmmBaseListener implements cmmListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterValue(cmmParser.ValueContext ctx) { }
+	@Override public void enterVar(cmmParser.VarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitValue(cmmParser.ValueContext ctx) { }
+	@Override public void exitVar(cmmParser.VarContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool(cmmParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool(cmmParser.BoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -256,25 +268,13 @@ public class cmmBaseListener implements cmmListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstant(cmmParser.ConstantContext ctx) { }
+	@Override public void enterValue(cmmParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstant(cmmParser.ConstantContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSignExpr(cmmParser.SignExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSignExpr(cmmParser.SignExprContext ctx) { }
+	@Override public void exitValue(cmmParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -287,6 +287,18 @@ public class cmmBaseListener implements cmmListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValueExpr(cmmParser.ValueExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBoolExpr(cmmParser.BoolExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBoolExpr(cmmParser.BoolExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -323,6 +335,18 @@ public class cmmBaseListener implements cmmListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCompareExpr(cmmParser.CompareExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVarExpr(cmmParser.VarExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVarExpr(cmmParser.VarExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

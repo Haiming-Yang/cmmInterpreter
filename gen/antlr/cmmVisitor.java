@@ -125,11 +125,17 @@ public interface cmmVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssign_stmt(cmmParser.Assign_stmtContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link cmmParser#value}.
+	 * Visit a parse tree produced by {@link cmmParser#var}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitValue(cmmParser.ValueContext ctx);
+	T visitVar(cmmParser.VarContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link cmmParser#bool}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBool(cmmParser.BoolContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link cmmParser#array}.
 	 * @param ctx the parse tree
@@ -137,18 +143,11 @@ public interface cmmVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArray(cmmParser.ArrayContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link cmmParser#constant}.
+	 * Visit a parse tree produced by {@link cmmParser#value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitConstant(cmmParser.ConstantContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code SignExpr}
-	 * labeled alternative in {@link cmmParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSignExpr(cmmParser.SignExprContext ctx);
+	T visitValue(cmmParser.ValueContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ValueExpr}
 	 * labeled alternative in {@link cmmParser#expr}.
@@ -156,6 +155,13 @@ public interface cmmVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValueExpr(cmmParser.ValueExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code BoolExpr}
+	 * labeled alternative in {@link cmmParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBoolExpr(cmmParser.BoolExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code MulDivExpr}
 	 * labeled alternative in {@link cmmParser#expr}.
@@ -177,6 +183,13 @@ public interface cmmVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCompareExpr(cmmParser.CompareExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code VarExpr}
+	 * labeled alternative in {@link cmmParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarExpr(cmmParser.VarExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ParenthesesExpr}
 	 * labeled alternative in {@link cmmParser#expr}.

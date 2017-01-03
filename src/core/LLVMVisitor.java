@@ -10,18 +10,18 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 /**
  * Created by steveyyy on 2016/12/31.
  */
-public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
+public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
     private IOInterface io;
     private LLVMIO llvmIO;
 
-    ParseTreeProperty<Scope> scopes;
-    GlobalScope globals;
-    Scope currentScope;
+    ParseTreeProperty<SymbolList> scopes;
+    GlobalSymbolList globals;
+    SymbolList currentSymbolList;
     public LLVMIO getLlvmIO(){
         return llvmIO;
     }
 
-    public LLVMVisitor(GlobalScope globals, ParseTreeProperty<Scope> scopes, IOInterface io, LLVMIO llvmIO) {
+    public LLVMVisitor(GlobalSymbolList globals, ParseTreeProperty<SymbolList> scopes, IOInterface io, LLVMIO llvmIO) {
         this.io = io;
         this.globals = globals;
         this.scopes = scopes;
@@ -29,8 +29,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitProgram(cmmParser.ProgramContext ctx) {
-        currentScope = globals;
+    public ReturnVal visitProgram(cmmParser.ProgramContext ctx) {
+        currentSymbolList = globals;
         super.visitProgram(ctx);
         if(Constant.LLVM) {
             llvmIO.output("ret i32 0\n" +
@@ -62,15 +62,68 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }
         return null;
     }
+    @Override
+    public ReturnVal visitDecl_assign(cmmParser.Decl_assignContext ctx) {
+        Token token = ctx.Ident().getSymbol();
+        String varName = token.getText();
+        Symbol symbol = currentSymbolList.resolve(varName);
+        if(symbol == null){
+            io.output("ERROR: no such variable <"
+                    + varName
+                    + "> in line "
+                    + token.getLine()
+                    + ":" + token.getCharPositionInLine());
+            return null;
+        }else{ // 变量存在
+            ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
+            ReturnVal value = computeVisitor.visit(ctx.expr());
+
+            if( !(value.getType()== Type.tInt || value.getType() == Type.tDouble)){
+                Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
+                io.output("ERROR: unmatched type on two side of <"
+                        + assign.getText()
+                        + "> in line "
+                        + assign.getLine()
+                        +":"
+                        + assign.getCharPositionInLine());
+                return null;
+            }else{ // 新值覆盖旧值
+                if(symbol.getType() == Type.tInt){
+                    if(value.getValue() instanceof  Integer){
+                        symbol.setValue(value.getValue());
+                    }
+                    else{
+                        Double n = (Double) value.getValue();
+                        symbol.setValue(n.intValue());
+                    }
+                }
+                else{
+                    if(value.getValue() instanceof Integer){
+                        Integer n = (Integer) value.getValue();
+                        Double dn = n.doubleValue();
+                        symbol.setValue(dn);
+                    }
+                    else{
+                        Double n = (Double)value.getValue();
+                        symbol.setValue(n);
+                    }
+                }
+
+            }
+        }
+
+        return visitChildren(ctx);
+    }
+
 
     @Override
-    public ExprReturnVal visitStmt_block(cmmParser.Stmt_blockContext ctx) {
-        currentScope = scopes.get(ctx);
+    public ReturnVal visitStmt_block(cmmParser.Stmt_blockContext ctx) {
+        currentSymbolList = scopes.get(ctx);
         super.visitStmt_block(ctx);
-        currentScope = currentScope.getEnclosingScope();
+        currentSymbolList = currentSymbolList.getEnclosingSymbolList();
         return null;
     }
-    @Override public ExprReturnVal visitVarlist(cmmParser.VarlistContext ctx) {
+    @Override public ReturnVal visitVarlist(cmmParser.VarlistContext ctx) {
         super.visitVarlist(ctx);
         String typeStr = ctx.getParent().getChild(0).getText();
         for(cmmParser.ArrayContext arrayContext: ctx.array()){
@@ -88,7 +141,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x i32], align 16");
                         llvmIO.varMap.put(name,llvmIO.getSSA());
                     }
-                    else if (typeStr.equals("real")){
+                    else if (typeStr.equals("double")){
                         llvmIO.selfAddSSA();
                         llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x double], align 16");
                         llvmIO.varMap.put(name,llvmIO.getSSA());
@@ -110,7 +163,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                             "%" + llvmIO.getSSA() + " = " + "alloca i32, align 4");
                     llvmIO.varMap.put(node.getSymbol().getText(),llvmIO.getSSA());
                 }
-                else if(typeStr.equals("real")){
+                else if(typeStr.equals("double")){
                     llvmIO.selfAddSSA();
                     llvmIO.output(
                             "%" + llvmIO.getSSA() + " = " + "alloca double, align 8");
@@ -125,8 +178,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         // 普通变量在声明时赋值
         for(cmmParser.Decl_assignContext decl_assignContext : ctx.decl_assign()){
             Token token = decl_assignContext.Ident().getSymbol();
-            ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
-            ExprReturnVal value = exprComputeVisitor.visit(decl_assignContext.expr());
+            ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
+            ReturnVal value = computeVisitor.visit(decl_assignContext.expr());
 
 
             // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
@@ -134,28 +187,58 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
 
                 if(Constant.LLVM){
                     if(typeStr.equals("int")) {
-                        llvmIO.selfAddSSA();
-                        llvmIO.output(
-                                "%"
-                                        + llvmIO.getSSA()
-                                        + "="
-                                        + "alloca i32, align 4\n"
-                                        + "store i32 "
-                                        + value.getValue()
-                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
-                        llvmIO.varMap.put(token.getText(),llvmIO.getSSA());
+                        if(value.getValue() instanceof  Integer) {
+                            llvmIO.selfAddSSA();
+                            llvmIO.output(
+                                    "%"
+                                            + llvmIO.getSSA()
+                                            + "="
+                                            + "alloca i32, align 4\n"
+                                            + "store i32 "
+                                            + value.getValue()
+                                            + ", i32* %" + llvmIO.getSSA() + ", align 4");
+                            llvmIO.varMap.put(token.getText(), llvmIO.getSSA());
+                        }
+                        else{
+                            Double dV =  (Double)value.getValue();
+                            int v = dV.intValue();
+                            llvmIO.selfAddSSA();
+                            llvmIO.output(
+                                    "%"
+                                            + llvmIO.getSSA()
+                                            + "="
+                                            + "alloca i32, align 4\n"
+                                            + "store i32 "
+                                            + v
+                                            + ", i32* %" + llvmIO.getSSA() + ", align 4");
+                            llvmIO.varMap.put(token.getText(), llvmIO.getSSA());
+                        }
                     }
                     else {
-                        llvmIO.selfAddSSA();
-                        llvmIO.output(
-                                "%"
-                                        + llvmIO.getSSA()
-                                        + "="
-                                        + "double, align 8\n"
-                                        + "store double "
-                                        + value.getValue()
-                                        + ", i32* %" + llvmIO.getSSA() + ", align 4");
-                        llvmIO.varMap.put(token.getText(),llvmIO.getSSA());
+                        if(value.getValue() instanceof  Double) {
+                            llvmIO.selfAddSSA();
+                            llvmIO.output(
+                                    "%"
+                                            + llvmIO.getSSA()
+                                            + "="
+                                            + "alloca double, align 8\n"
+                                            + "store double "
+                                            + value.getValue()
+                                            + ", double* %" + llvmIO.getSSA() + ", align 8");
+                            llvmIO.varMap.put(token.getText(), llvmIO.getSSA());
+                        }
+                        else {
+                            llvmIO.selfAddSSA();
+                            llvmIO.output(
+                                    "%"
+                                            + llvmIO.getSSA()
+                                            + "="
+                                            + "alloca double, align 8\n"
+                                            + "store double "
+                                            + value.getValue() +".000000e+00"
+                                            + ", double* %" + llvmIO.getSSA() + ", align 8");
+                            llvmIO.varMap.put(token.getText(), llvmIO.getSSA());
+                        }
                     }
                 }
             }
@@ -164,13 +247,13 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         return null;
     }
     @Override
-    public ExprReturnVal visitAssign_stmt(cmmParser.Assign_stmtContext ctx) {
+    public ReturnVal visitAssign_stmt(cmmParser.Assign_stmtContext ctx) {
         super.visitAssign_stmt(ctx);
 
-        if(ctx.value().Ident() == null){ // 数组
-            Token token = ctx.value().array().Ident().getSymbol();
+        if(ctx.var().Ident() == null){ // 数组
+            Token token = ctx.var().array().Ident().getSymbol();
             String varName = token.getText();
-            Symbol symbol = currentScope.resolve(varName);
+            Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
@@ -179,14 +262,14 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         + ":" + token.getCharPositionInLine());
                 return null;
             }else{
-                ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
-                ExprReturnVal value = exprComputeVisitor.visit(ctx.expr()); // 右边表达式计算得到的值
+                ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
+                ReturnVal value = computeVisitor.visit(ctx.expr()); // 右边表达式计算得到的值
                 int varIndex;
-                if(ctx.value().array().IntConstant() != null){ // 索引为int常量
-                    varIndex = Integer.parseInt(ctx.value().array().IntConstant().getText());
+                if(ctx.var().array().IntConstant() != null){ // 索引为int常量
+                    varIndex = Integer.parseInt(ctx.var().array().IntConstant().getText());
                 }else{ // 索引为表达式
-                    ExprComputeVisitor indexComputeVisitor = new ExprComputeVisitor(currentScope, io);
-                    ExprReturnVal indexValue = indexComputeVisitor.visit(ctx.value().array().expr());
+                    ComputeVisitor indexComputeVisitor = new ComputeVisitor(currentSymbolList, io);
+                    ReturnVal indexValue = indexComputeVisitor.visit(ctx.var().array().expr());
                     if(indexValue.getType() != Type.tInt){
                         io.output(" LLVMERROR: invalid index for <"
                                 + varName
@@ -281,9 +364,9 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                 }
             }
         }else{ // 普通变量
-            Token token = ctx.value().Ident().getSymbol();
+            Token token = ctx.var().Ident().getSymbol();
             String varName = token.getText();
-            Symbol symbol = currentScope.resolve(varName);
+            Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
@@ -292,8 +375,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         + ":" + token.getCharPositionInLine());
                 return null;
             }else{ // 变量存在
-                ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
-                ExprReturnVal value = exprComputeVisitor.visit(ctx.expr());
+                ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
+                ReturnVal value = computeVisitor.visit(ctx.expr());
 
 
                     symbol.setValue(value.getValue());
@@ -301,16 +384,23 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
                         int varSSACode = llvmIO.varMap.get(varName);
                         //int size = varArray.length;
                         if(symbol.getType() == Type.tInt){
-                            llvmIO.output("store i32 "+ value.getValue()+" , i32* %"+llvmIO.getSSA()+", align 4");
+                            if(value.getValue() instanceof  Integer) {
+                                llvmIO.output("store i32 " + value.getValue() + " , i32* %" + llvmIO.varMap.get(symbol.getName()) + ", align 4");
+                            }
+                            else {
+                                Double dV = (Double) value.getValue();
+                                int v = dV.intValue();
+                                llvmIO.output("store i32 " + v + " , i32* %" + llvmIO.varMap.get(symbol.getName()) + ", align 4");
+                            }
                            // llvmIO.print(llvmIO);
                             }
-                        else if(symbol.getType() == Type.tReal){
+                        else if(symbol.getType() == Type.tDouble){
                             if(value.getValue() instanceof  Double){
-                                llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.getSSA()+", align 8");
+                                llvmIO.output("store double "+ value.getValue()+" , double* %"+llvmIO.varMap.get(symbol.getName())+", align 8");
                                 //llvmIO.print(llvmIO);
                                 }
                             else{
-                                llvmIO.output("store double "+ value.getValue()+".000000e+00, double* %"+llvmIO.getSSA()+", align 8");
+                                llvmIO.output("store double "+ value.getValue()+".000000e+00, double* %"+llvmIO.varMap.get(symbol.getName())+", align 8");
                                 //llvmIO.print(llvmIO);
                                 }
                         }
@@ -324,13 +414,13 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitRead_stmt(cmmParser.Read_stmtContext ctx) {
+    public ReturnVal visitRead_stmt(cmmParser.Read_stmtContext ctx) {
         super.visitRead_stmt(ctx);
         Token token = null;
         if(ctx.Ident() == null){ // 数组
             token = ctx.array().Ident().getSymbol();
             String varName = token.getText();
-            Symbol symbol = currentScope.resolve(varName);
+            Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
@@ -376,7 +466,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
         }else{ // 普通变量
             token = ctx.Ident().getSymbol();
             String varName = token.getText();
-            Symbol symbol = currentScope.resolve(varName);
+            Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
                 io.output("LLVMERROR: no such variable <"
                         + varName
@@ -398,12 +488,12 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitWrite_stmt(cmmParser.Write_stmtContext ctx) {
+    public ReturnVal visitWrite_stmt(cmmParser.Write_stmtContext ctx) {
         super.visitWrite_stmt(ctx);
         boolean flag = true;
         llvmIO.setWriteOrNot(flag);
-        ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
-        Object value = exprComputeVisitor.visit(ctx.expr()).getValue();
+        ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
+        Object value = computeVisitor.visit(ctx.expr()).getValue();
        // io.output(value);
         if(Constant.LLVM){
             if(value instanceof  Integer) {
@@ -447,7 +537,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     // ==========下面是if else的各种变种，为了减少判断，特地在文法了进行了拆分
 
     @Override
-    public ExprReturnVal visitI_S(cmmParser.I_SContext ctx) { // if stmt
+    public ReturnVal visitI_S(cmmParser.I_SContext ctx) { // if stmt
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt());
         }
@@ -455,7 +545,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitI_SB(cmmParser.I_SBContext ctx) {
+    public ReturnVal visitI_SB(cmmParser.I_SBContext ctx) {
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt_block());
         }
@@ -463,7 +553,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitI_S_E_S(cmmParser.I_S_E_SContext ctx) {
+    public ReturnVal visitI_S_E_S(cmmParser.I_S_E_SContext ctx) {
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt(0));
         }else{
@@ -473,7 +563,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitI_S_E_SB(cmmParser.I_S_E_SBContext ctx) {
+    public ReturnVal visitI_S_E_SB(cmmParser.I_S_E_SBContext ctx) {
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt());
         }else{
@@ -483,7 +573,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitI_SB_E_S(cmmParser.I_SB_E_SContext ctx) {
+    public ReturnVal visitI_SB_E_S(cmmParser.I_SB_E_SContext ctx) {
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt_block());
         }else{
@@ -493,7 +583,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitI_SB_E_SB(cmmParser.I_SB_E_SBContext ctx) {
+    public ReturnVal visitI_SB_E_SB(cmmParser.I_SB_E_SBContext ctx) {
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt_block(0));
         }else{
@@ -503,8 +593,8 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     private boolean isExprTrue(cmmParser.ExprContext ctx){
-        ExprComputeVisitor exprComputeVisitor = new ExprComputeVisitor(currentScope, io);
-        ExprReturnVal value = exprComputeVisitor.visit(ctx);
+        ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
+        ReturnVal value = computeVisitor.visit(ctx);
         if(value.getType() == Type.tBool){
             return (Boolean) value.getValue();
         }else{
@@ -515,7 +605,9 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     // ============================= end if else ==========================
 
     @Override
-    public ExprReturnVal visitWhile_stmt(cmmParser.While_stmtContext ctx) {
+    public ReturnVal visitWhile_stmt(cmmParser.While_stmtContext ctx) {
+        boolean flag = isExprTrue(ctx.expr());
+       // System.out.print(ctx.expr().toString());
 
         while (isExprTrue(ctx.expr())) {
             if(ctx.stmt() != null){ // while后面紧跟stmt
@@ -529,7 +621,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ExprReturnVal> {
     }
 
     @Override
-    public ExprReturnVal visitBreak_stmt(cmmParser.Break_stmtContext ctx) {
+    public ReturnVal visitBreak_stmt(cmmParser.Break_stmtContext ctx) {
         return super.visitBreak_stmt(ctx);
     }
 

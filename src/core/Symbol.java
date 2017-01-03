@@ -7,7 +7,7 @@ public class Symbol {
 
     String name;      // All symbols at least have a name
     Type type;
-    Scope scope;      // All symbols know what scope contains them.
+    SymbolList symbolList;      // All symbols know what symbolList contains them.
     Object value;
 
 

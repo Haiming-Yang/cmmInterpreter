@@ -5,7 +5,7 @@ package core;
  */
 public enum Type {
     tInt,
-    tReal,
+    tDouble,
     tIntArray,
     tRealArray,
     tBool

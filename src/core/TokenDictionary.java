@@ -18,7 +18,7 @@ public class TokenDictionary {
             case cmmLexer.Read:
             case cmmLexer.Write:
             case cmmLexer.Int:
-            case cmmLexer.Real:
+            case cmmLexer.Double:
             case cmmLexer.Break:
                 type = "keyword";
                 break;
@@ -28,11 +28,16 @@ public class TokenDictionary {
             case cmmLexer.IntConstant:
                 type = "int constant";
                 break;
-            case cmmLexer.RealConstant:
-                type = "real constant";
+            case cmmLexer.DoubleConstant:
+                type = "double constant";
                 break;
+
             case cmmLexer.BooleanConstant:
                 type = "boolean constant";
+                break;
+            case cmmLexer.HexDoubleConstant:
+            case cmmLexer.HexIntConstant:
+                type = "hex constant";
                 break;
             case cmmLexer.MulDivMod:
             case cmmLexer.CompOp:
