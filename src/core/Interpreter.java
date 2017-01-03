@@ -1,7 +1,6 @@
 package core;
 
-import IO.ConsoleIO;
-import  IO.LLVMIO;
+import IO.LLVMIO;
 import antlr.cmmLexer;
 import antlr.cmmParser;
 import org.antlr.v4.gui.Trees;
@@ -11,9 +10,6 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -103,23 +99,23 @@ public class Interpreter {
     public void setShowAST(boolean showAST) {
         this.showAST = showAST;
     }
-   //主函数
-    public static void main(String[] args) throws IOException {
-
-        byte[] bytes = Files.readAllBytes(Paths.get("./test.cmm"));
-        String source = new String(bytes);
-        System.out.println(source);
-
-
-        ConsoleIO lexIO = new ConsoleIO();
-        ConsoleIO consoleIO = new ConsoleIO();
-        LLVMIO llvmIO = new LLVMIO();
-        Interpreter test = new Interpreter(source,lexIO,consoleIO,llvmIO);
-        test.run();
-        llvmIO.print(llvmIO);
-
-
-    }
+//   //主函数
+//    public static void main(String[] args) throws IOException {
+//
+//        byte[] bytes = Files.readAllBytes(Paths.get("./test.cmm"));
+//        String source = new String(bytes);
+//        System.out.println(source);
+//
+//
+//        ConsoleIO lexIO = new ConsoleIO();
+//        ConsoleIO consoleIO = new ConsoleIO();
+//        LLVMIO llvmIO = new LLVMIO();
+//        Interpreter test = new Interpreter(source,lexIO,consoleIO,llvmIO);
+//        test.run();
+//        llvmIO.print(llvmIO);
+//
+//
+//    }
 
 
 }

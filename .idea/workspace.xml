@@ -2,117 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35247498-5f30-4a66-82e4-79a721072108" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/antlr/cmmLexer.g4" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/ComputeVisitor.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmm.tokens" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmmBaseListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmmBaseVisitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmmLexer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmmLexer.tokens" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmmListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmmParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/antlr/cmmVisitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/ConsoleIO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor$AboutAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor$NewAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor$OpenAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor$RunAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor$SaveAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/Editor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/EditorGUI.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/EditorIO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/HighlightJPane$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/HighlightJPane.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/LineNumberBorder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MyStringTokenizer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ConstantContext.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$SignExprContext.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/AbstractLayout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/DimensionInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/GridConstraints.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/GridLayoutManager.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/HorizontalInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/LayoutState.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/Spacer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/SupportCode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/Util.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/com/intellij/uiDesigner/core/VerticalInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/BaseScope.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Compiler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/DefPhaseListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/ExprComputeVisitor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/ExprReturnVal.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/GlobalScope.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/LocalScope.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/RefPhaseVisitor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Scope.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/ExprComputeVisitor.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/BaseScope.java" afterPath="$PROJECT_DIR$/src/core/BaseSymbolList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/Compiler.java" afterPath="$PROJECT_DIR$/src/core/Interpreter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/DefPhaseListener.java" afterPath="$PROJECT_DIR$/src/core/DefListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/ExprReturnVal.java" afterPath="$PROJECT_DIR$/src/core/ReturnVal.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/GlobalScope.java" afterPath="$PROJECT_DIR$/src/core/GlobalSymbolList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/LocalScope.java" afterPath="$PROJECT_DIR$/src/core/LocalSymbolList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/RefPhaseVisitor.java" afterPath="$PROJECT_DIR$/src/core/RuntimeVisitor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/core/Scope.java" afterPath="$PROJECT_DIR$/src/core/SymbolList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmBaseListener.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmBaseListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmBaseVisitor.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmBaseVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmLexer.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmLexer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmListener.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$AddMinExprContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$AddMinExprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ArrayContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ArrayContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Assign_stmtContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Assign_stmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Break_stmtContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Break_stmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$CompareExprContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$CompareExprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Decl_assignContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Decl_assignContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ExprContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ExprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SBContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SBContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SB_E_SBContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SB_E_SBContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SB_E_SContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SB_E_SContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_SContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_S_E_SBContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_S_E_SBContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_S_E_SContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$I_S_E_SContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$If_stmtContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$If_stmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$MulDivExprContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$MulDivExprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ParenthesesExprContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ParenthesesExprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ProgramContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ProgramContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Read_stmtContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Read_stmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$StmtContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$StmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Stmt_blockContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Stmt_blockContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$TypeContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$TypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ValueContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ValueContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ValueExprContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$ValueExprContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Var_declContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Var_declContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$VarlistContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$VarlistContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$While_stmtContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$While_stmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Write_stmtContext.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser$Write_stmtContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmVisitor.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/LLVMVisitor.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/LLVMVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Symbol.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Symbol.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/TokenDictionary.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/TokenDictionary.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Type.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Type.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/IoInput.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/LineNumListen.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/LineNumberScrollListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/MainGui.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/SyntaxHL.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/coloringrun.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/onefile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUI/show_irc.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmm.g4" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmm.g4" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmm.tokens" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmm.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmLexer.tokens" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmmLexer.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmm.g4" afterPath="$PROJECT_DIR$/src/antlr/cmm.g4" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmm.tokens" afterPath="$PROJECT_DIR$/src/antlr/cmm.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmmBaseListener.java" afterPath="$PROJECT_DIR$/src/antlr/cmmBaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java" afterPath="$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmmLexer.java" afterPath="$PROJECT_DIR$/src/antlr/cmmLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmmLexer.tokens" afterPath="$PROJECT_DIR$/src/antlr/cmmLexer.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmmListener.java" afterPath="$PROJECT_DIR$/src/antlr/cmmListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmmParser.java" afterPath="$PROJECT_DIR$/src/antlr/cmmParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmmVisitor.java" afterPath="$PROJECT_DIR$/src/antlr/cmmVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/LLVMVisitor.java" afterPath="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Symbol.java" afterPath="$PROJECT_DIR$/src/core/Symbol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/TokenDictionary.java" afterPath="$PROJECT_DIR$/src/core/TokenDictionary.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Type.java" afterPath="$PROJECT_DIR$/src/core/Type.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.cmm" afterPath="$PROJECT_DIR$/test.cmm" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IO/ConsoleIO.java" afterPath="$PROJECT_DIR$/src/IO/ConsoleIO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IO/LLVMIO.java" afterPath="$PROJECT_DIR$/src/IO/LLVMIO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Interpreter.java" afterPath="$PROJECT_DIR$/src/core/Interpreter.java" />
     </list>
     <ignored path="cmmInterpreter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,21 +39,21 @@
     <favorites_list name="cmmInterpreter" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="ComputeVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/ComputeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
+            <state relative-caret-position="2370">
               <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.cmm" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.cmm" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.cmm">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
+            <state relative-caret-position="420">
               <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
@@ -162,7 +63,7 @@
       <file leaf-file-name="cmmLexer.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/antlr/cmmLexer.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="375">
               <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
               <folding />
             </state>
@@ -182,7 +83,7 @@
       <file leaf-file-name="LLVMVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="5550">
               <caret line="377" column="70" selection-start-line="377" selection-start-column="70" selection-end-line="377" selection-end-column="70" />
               <folding />
             </state>
@@ -192,59 +93,89 @@
       <file leaf-file-name="LLVMIO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="26" column="76" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RuntimeVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="94" column="0" selection-start-line="42" selection-start-column="4" selection-end-line="94" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractParseTreeVisitor.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/antlr4-runtime-4.6.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="-1104">
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
               <folding>
-                <element signature="e#537#538#0" expanded="true" />
-                <element signature="e#577#578#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#350#358#0" expanded="true" />
+                <element signature="e#417#425#0" expanded="true" />
+                <element signature="e#487#504#0" expanded="true" />
+                <element signature="e#732#733#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#813#814#0" expanded="true" />
+                <element signature="e#853#854#0" expanded="true" />
+                <element signature="e#894#895#0" expanded="true" />
+                <element signature="e#937#938#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
+                <element signature="e#1024#1025#0" expanded="true" />
+                <element signature="e#1072#1073#0" expanded="true" />
+                <element signature="e#1110#1111#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1186#1187#0" expanded="true" />
+                <element signature="e#1258#1259#0" expanded="true" />
+                <element signature="e#1294#1295#0" expanded="true" />
+                <element signature="e#1330#1331#0" expanded="true" />
+                <element signature="e#1366#1367#0" expanded="true" />
+                <element signature="e#1444#1445#0" expanded="true" />
+                <element signature="e#1483#1484#0" expanded="true" />
+                <element signature="e#1522#1523#0" expanded="true" />
+                <element signature="e#1561#1562#0" expanded="true" />
+                <element signature="e#1781#1782#0" expanded="true" />
+                <element signature="e#1821#1822#0" expanded="true" />
+                <element signature="e#1967#1968#0" expanded="true" />
+                <element signature="e#1997#1998#0" expanded="true" />
+                <element signature="e#2040#2041#0" expanded="true" />
+                <element signature="e#2067#2068#0" expanded="true" />
+                <element signature="e#2209#2210#0" expanded="true" />
+                <element signature="e#2247#2248#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cmmBaseVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java">
+      <file leaf-file-name="ConsoleIO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IO/ConsoleIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
-              <folding />
+            <state relative-caret-position="105">
+              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+              <folding>
+                <element signature="e#291#292#0" expanded="true" />
+                <element signature="e#331#332#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cmmParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/antlr/cmmParser.java">
+      <file leaf-file-name="Interpreter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="199" column="0" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
+            <state relative-caret-position="516">
+              <caret line="117" column="7" selection-start-line="101" selection-start-column="4" selection-end-line="117" selection-end-column="7" />
               <folding>
-                <element signature="e#28005#28006#0" expanded="true" />
-                <element signature="e#28056#28057#0" expanded="true" />
-                <element signature="e#47479#47480#0" expanded="true" />
-                <element signature="e#47530#47531#0" expanded="true" />
-                <element signature="e#48303#48304#0" expanded="true" />
-                <element signature="e#48353#48354#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainGui.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1500">
+              <caret line="102" column="36" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SyntaxHL.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-300">
+              <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -278,7 +209,6 @@
         <option value="$PROJECT_DIR$/src/IO/EditorIO.java" />
         <option value="$PROJECT_DIR$/src/antlr/cmmLexer.java" />
         <option value="$PROJECT_DIR$/src/core/LocalScope.java" />
-        <option value="$PROJECT_DIR$/src/IO/ConsoleIO.java" />
         <option value="$PROJECT_DIR$/src/core/BaseScope.java" />
         <option value="$PROJECT_DIR$/src/core/Constant.java" />
         <option value="$PROJECT_DIR$/src/core/ExprReturnVal.java" />
@@ -286,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/core/IOInterface.java" />
         <option value="$PROJECT_DIR$/src/core/Scope.java" />
         <option value="$PROJECT_DIR$/src/core/Var.java" />
-        <option value="$PROJECT_DIR$/src/IO/LLVMIO.java" />
         <option value="$PROJECT_DIR$/src/core/Arith.java" />
         <option value="$PROJECT_DIR$/src/core/Symbol.java" />
         <option value="$PROJECT_DIR$/src/antlr/cmmParser.g4" />
@@ -301,9 +230,13 @@
         <option value="$PROJECT_DIR$/src/antlr/cmmLexer.g4" />
         <option value="$PROJECT_DIR$/src/core/TokenDictionary.java" />
         <option value="$PROJECT_DIR$/src/core/DefListener.java" />
-        <option value="$PROJECT_DIR$/src/core/Interpreter.java" />
         <option value="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
         <option value="$PROJECT_DIR$/test.cmm" />
+        <option value="$PROJECT_DIR$/src/IO/LLVMIO.java" />
+        <option value="$PROJECT_DIR$/src/IO/ConsoleIO.java" />
+        <option value="$PROJECT_DIR$/src/core/Interpreter.java" />
+        <option value="$PROJECT_DIR$/src/GUI/MainGui.java" />
+        <option value="$PROJECT_DIR$/src/GUI/SyntaxHL.java" />
       </list>
     </option>
   </component>
@@ -350,8 +283,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -406,7 +337,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="GUI" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -424,7 +355,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="antlr" />
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmmInterpreter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmmInterpreter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -449,6 +394,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -470,16 +417,17 @@
     <property name="$PROJECT_DIR$/src/antlr/cmmParser.g4::/gen-visitor" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/GUI" />
+      <recent name="$PROJECT_DIR$/src/antlr" />
+      <recent name="$PROJECT_DIR$/gen/antlr" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/gen/antlr" />
       <recent name="$PROJECT_DIR$/src/core" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/antlr" />
-      <recent name="$PROJECT_DIR$/gen/antlr" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.Interpreter">
+  <component name="RunManager" selected="Application.MainGui">
     <configuration default="false" name="Editor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -508,6 +456,26 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="core.Interpreter" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="cmmInterpreter" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="MainGui" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="GUI.MainGui" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -912,14 +880,16 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Editor" />
       <item index="1" class="java.lang.String" itemvalue="Application.Interpreter" />
+      <item index="2" class="java.lang.String" itemvalue="Application.MainGui" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Interpreter" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Editor" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Application.MainGui" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Interpreter" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Editor" />
       </list>
     </recent_temporary>
   </component>
@@ -956,11 +926,12 @@
       <workItem from="1483423622263" duration="16022000" />
       <workItem from="1483446579562" duration="660000" />
       <workItem from="1483458260570" duration="4418000" />
+      <workItem from="1483463228230" duration="705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121126000" />
+    <option name="totallyTimeSpent" value="121831000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="0" />
@@ -974,8 +945,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4206128" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1047,8 +1018,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GUI/LineNumberBorder.java" />
-    <entry file="file://$PROJECT_DIR$/src/GUI/HighlightJPane.java" />
     <entry file="jar://$PROJECT_DIR$/lib/antlr4-4.6.jar!/org/antlr/v4/gui/Trees.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1163,13 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IO/ConsoleIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gen/antlr/cmmLexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1237,14 +1199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="82" selection-start-line="9" selection-start-column="82" selection-end-line="9" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/SymbolList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1265,9 +1219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
           <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="e#2380#2381#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1275,7 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1283,9 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="e#721#722#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1293,23 +1240,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="87" column="42" selection-start-line="87" selection-start-column="42" selection-end-line="87" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
+        <state relative-caret-position="1350">
           <caret line="94" column="0" selection-start-line="42" selection-start-column="4" selection-end-line="94" selection-end-column="0" />
           <folding />
         </state>
@@ -1317,7 +1253,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="390">
           <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
           <folding />
         </state>
@@ -1325,7 +1261,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/antlr/cmmParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
+        <state relative-caret-position="2415">
           <caret line="199" column="0" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
           <folding>
             <element signature="e#28005#28006#0" expanded="true" />
@@ -1340,34 +1276,23 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/antlr4-runtime-4.6.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
+        <state relative-caret-position="330">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#577#578#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/ComputeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
+        <state relative-caret-position="2370">
           <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="26" column="76" selection-start-line="26" selection-start-column="76" selection-end-line="26" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="5550">
           <caret line="377" column="70" selection-start-line="377" selection-start-column="70" selection-end-line="377" selection-end-column="70" />
           <folding />
         </state>
@@ -1383,7 +1308,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/antlr/cmmLexer.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="375">
           <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
           <folding />
         </state>
@@ -1391,9 +1316,97 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.cmm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
+        <state relative-caret-position="420">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1104">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#350#358#0" expanded="true" />
+            <element signature="e#417#425#0" expanded="true" />
+            <element signature="e#487#504#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
+            <element signature="e#1072#1073#0" expanded="true" />
+            <element signature="e#1110#1111#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
+            <element signature="e#1258#1259#0" expanded="true" />
+            <element signature="e#1294#1295#0" expanded="true" />
+            <element signature="e#1330#1331#0" expanded="true" />
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1483#1484#0" expanded="true" />
+            <element signature="e#1522#1523#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1821#1822#0" expanded="true" />
+            <element signature="e#1967#1968#0" expanded="true" />
+            <element signature="e#1997#1998#0" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+            <element signature="e#2067#2068#0" expanded="true" />
+            <element signature="e#2209#2210#0" expanded="true" />
+            <element signature="e#2247#2248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IO/ConsoleIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+          <folding>
+            <element signature="e#291#292#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Symbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="117" column="7" selection-start-line="101" selection-start-column="4" selection-end-line="117" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1500">
+          <caret line="102" column="36" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
