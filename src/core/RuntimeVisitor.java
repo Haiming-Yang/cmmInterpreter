@@ -13,15 +13,15 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     private IOInterface io;
     private LLVMIO llvmIO;
-
-    ParseTreeProperty<SymbolList> scopes;
+    public  boolean runSucOrNot = true;
+    ParseTreeProperty<SymbolList> symbolList;
     GlobalSymbolList globals;
     SymbolList currentSymbolList;
 
-    public RuntimeVisitor(GlobalSymbolList globals, ParseTreeProperty<SymbolList> scopes, IOInterface io, LLVMIO llvmIO) {
+    public RuntimeVisitor(GlobalSymbolList globals, ParseTreeProperty<SymbolList> symbolList, IOInterface io, LLVMIO llvmIO) {
         this.io = io;
         this.globals = globals;
-        this.scopes = scopes;
+        this.symbolList = symbolList;
         this.llvmIO = llvmIO;
     }
 
@@ -29,12 +29,13 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
     public ReturnVal visitProgram(cmmParser.ProgramContext ctx) {
         currentSymbolList = globals;
         super.visitProgram(ctx);
+        //runSucOrNot = true;
         return null;
     }
 
     @Override
     public ReturnVal visitStmt_block(cmmParser.Stmt_blockContext ctx) {
-        currentSymbolList = scopes.get(ctx);
+        currentSymbolList = symbolList.get(ctx);
         super.visitStmt_block(ctx);
         currentSymbolList = currentSymbolList.getEnclosingSymbolList();
         return null;
@@ -46,6 +47,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
         String varName = token.getText();
         Symbol symbol = currentSymbolList.resolve(varName);
         if(symbol == null){
+            runSucOrNot = false;
             io.output("ERROR: no such variable <"
                     + varName
                     + "> in line "
@@ -57,6 +59,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
             ReturnVal value = computeVisitor.visit(ctx.expr());
 
             if( !(value.getType()== Type.tInt || value.getType() == Type.tDouble)){
+                runSucOrNot = false;
                 Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
                 io.output("ERROR: unmatched type on two side of <"
                         + assign.getText()
@@ -102,6 +105,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
             String varName = token.getText();
             Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
+                runSucOrNot = false;
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -120,6 +124,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                    // if(ctx.var().array().expr().getText())
                     ReturnVal indexValue = indexComputeVisitor.visit(ctx.var().array().expr());
                     if(indexValue.getType() != Type.tInt){
+                        runSucOrNot =false;
                         io.output("ERROR: invalid index for <"
                                 + varName
                                 + "> in line "
@@ -150,6 +155,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                             }
 
                         }else{
+                            runSucOrNot = false;
                             io.output("ERROR: unmatched or uncast type during assignment of <"
                                     + varName
                                     + "> in line "
@@ -159,6 +165,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                             return null;
                         }
                     }else{
+                        runSucOrNot = false;
                         io.output("ERROR: index out of boundary of array <"
                                 + varName
                                 + "> in line "
@@ -187,6 +194,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                             }
 
                         }else{
+                            runSucOrNot = false;
                             io.output("ERROR: unmatched or uncast type during assignment of <"
                                     + varName
                                     + "> in line "
@@ -196,6 +204,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                             return null;
                         }
                     }else{
+                        runSucOrNot = false;
                         io.output("ERROR: index out of boundary of array <"
                                 + varName
                                 + "> in line "
@@ -211,6 +220,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
             String varName = token.getText();
             Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
+                runSucOrNot = false;
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -222,6 +232,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                 ReturnVal value = computeVisitor.visit(ctx.expr());
 
                 if( !(value.getType()== Type.tInt || value.getType() == Type.tDouble)){
+                    runSucOrNot = false;
                     Token assign = ctx.Assign().getSymbol(); // 找到等号方便定位错误
                     io.output("ERROR: wrong value <"
                             + assign.getText()
@@ -281,6 +292,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
             String varName = token.getText();
             Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
+                runSucOrNot = false;
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "
@@ -300,6 +312,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                     llvmIO.addInputList(inS);
                     varArray[varIndex] = in;
                 }else{
+                    runSucOrNot = false;
                     io.output("ERROR: index out of boundary of array <"
                             + varName
                             + "> in line "
@@ -318,6 +331,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                     llvmIO.addInputList(inS);
                     varArray[varIndex] = in;
                 }else{
+                    runSucOrNot = false;
                     io.output("ERROR: index out of boundary of array <"
                             + varName
                             + "> in line "
@@ -331,6 +345,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
             String varName = token.getText();
             Symbol symbol = currentSymbolList.resolve(varName);
             if(symbol == null){
+                runSucOrNot = false;
                 io.output("ERROR: no such variable <"
                         + varName
                         + "> in line "

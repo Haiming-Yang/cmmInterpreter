@@ -26,12 +26,13 @@ public class DefListener extends cmmBaseListener {
     }
 
     // 是一个IdentityHashMap<ParseTree,T>
-    ParseTreeProperty<SymbolList> scopes = new ParseTreeProperty<SymbolList>();
+    ParseTreeProperty<SymbolList> symbolList = new ParseTreeProperty<SymbolList>();
     GlobalSymbolList globals;
     SymbolList currentSymbolList;
+    public boolean defSucOrNot = true;
 
     public void saveSymbolList(ParserRuleContext ctx, SymbolList symbolList){
-        scopes.put(ctx, symbolList);
+        this.symbolList.put(ctx, symbolList);
     }
 
     @Override
@@ -45,6 +46,7 @@ public class DefListener extends cmmBaseListener {
     @Override
     public void exitProgram(cmmParser.ProgramContext ctx) {
         super.exitProgram(ctx);
+        //defSucOrNot = true;
 
     }
 
@@ -74,6 +76,7 @@ public class DefListener extends cmmBaseListener {
 
             int size = Integer.parseInt(arrayContext.IntConstant().getText());
             if(size <= 0 ){
+                defSucOrNot = false;
                 io.output("ERROR: invaild array index <"
                         + name
                         + "> in line "
@@ -84,6 +87,7 @@ public class DefListener extends cmmBaseListener {
             }
 
             else if(currentSymbolList.redundant(name)){
+                defSucOrNot = false;
                 io.output("ERROR: redundant definition of <"
                         + name
                         + "> in same symbolList in line "
@@ -107,6 +111,7 @@ public class DefListener extends cmmBaseListener {
 
             // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
             if(currentSymbolList.redundant(node.getSymbol().getText())){
+                defSucOrNot = false;
                 io.output("ERROR: redundant definition of <"
                         + node.getSymbol().getText()
                         + "> in same symbolList in line "
@@ -138,6 +143,7 @@ public class DefListener extends cmmBaseListener {
 
             // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
             if(currentSymbolList.redundant(token.getText())){
+                defSucOrNot = false;
                 io.output("ERROR: redundant definition of <"
                         + token.getText()
                         + "> in same symbolList in line "
@@ -201,6 +207,7 @@ public class DefListener extends cmmBaseListener {
     @Override
     public void visitErrorNode(ErrorNode node) {
         super.visitErrorNode(node);
+        defSucOrNot = false;
         io.output("ERROR: " + node.getText()
                 +" in line " + node.getSymbol().getLine()
                 +":" +node.getSymbol().getCharPositionInLine());

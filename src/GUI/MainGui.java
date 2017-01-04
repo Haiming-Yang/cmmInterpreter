@@ -31,7 +31,7 @@ public class MainGui {
 	private JTextPane textArea = null;
 	ConsoleIO lexIO = null;
 	ConsoleIO consoleIO = null;
-	LLVMIO llvmIO = null;
+	 LLVMIO llvmIO = null;
 	// 放置每一个文件对象的容器
 
 	/**
@@ -41,8 +41,11 @@ public class MainGui {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+
 					MainGui window = new MainGui();
-					window.frmKtom.setVisible(true);
+
+						window.frmKtom.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

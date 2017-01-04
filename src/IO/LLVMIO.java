@@ -113,8 +113,11 @@ public class LLVMIO implements IOInterface {
 
     public void print(IOInterface llvmIO) {
 
-        show_irc showcode = new show_irc( llvmIRList);
-        showcode.setVisible(true);
+
+        if(llvmIRList.size()>0) {
+            show_irc showcode = new show_irc(llvmIRList);
+            showcode.setVisible(true);
+        }
 
     }
 }

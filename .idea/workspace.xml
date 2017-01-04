@@ -2,17 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35247498-5f30-4a66-82e4-79a721072108" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.cmm" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/IoInput$1.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/IoInput$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/IoInput.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/IoInput.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$1.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2$1.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$3.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$4.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5$1.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$6.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$7.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$8.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$9.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/onefile.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/onefile.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/show_irc$1.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/show_irc$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/show_irc.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/show_irc.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/IoInput.java" afterPath="$PROJECT_DIR$/src/GUI/IoInput.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/LineNumListen.java" afterPath="$PROJECT_DIR$/src/GUI/LineNumListen.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output.ll" afterPath="$PROJECT_DIR$/output.ll" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MainGui.java" afterPath="$PROJECT_DIR$/src/GUI/MainGui.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/coloringrun.java" afterPath="$PROJECT_DIR$/src/GUI/coloringrun.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/onefile.java" afterPath="$PROJECT_DIR$/src/GUI/onefile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/show_irc.java" afterPath="$PROJECT_DIR$/src/GUI/show_irc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IO/LLVMIO.java" afterPath="$PROJECT_DIR$/src/IO/LLVMIO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/DefListener.java" afterPath="$PROJECT_DIR$/src/core/DefListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Interpreter.java" afterPath="$PROJECT_DIR$/src/core/Interpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/RuntimeVisitor.java" afterPath="$PROJECT_DIR$/src/core/RuntimeVisitor.java" />
     </list>
     <ignored path="cmmInterpreter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,76 +53,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LLVMIO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-609">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConsoleIO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IO/ConsoleIO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainGui.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-285">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="coloringrun.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/coloringrun.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IoInput.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/IoInput.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-639">
-              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LineNumberScrollListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/LineNumberScrollListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LineNumListen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/LineNumListen.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -133,7 +77,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SyntaxHL.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LLVMIO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="471">
+              <caret line="116" column="30" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Interpreter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-236">
+              <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SyntaxHL.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-3234">
@@ -143,11 +111,51 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MainGui.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/DefListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="211" column="21" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuntimeVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="460" column="0" selection-start-line="460" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LLVMVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5220">
+              <caret line="377" column="70" selection-start-line="377" selection-start-column="70" selection-end-line="377" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="show_irc.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/show_irc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+            <state relative-caret-position="195">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3323#3331#0" expanded="true" />
@@ -205,19 +213,20 @@
         <option value="$PROJECT_DIR$/src/core/ComputeVisitor.java" />
         <option value="$PROJECT_DIR$/src/antlr/cmmLexer.g4" />
         <option value="$PROJECT_DIR$/src/core/TokenDictionary.java" />
-        <option value="$PROJECT_DIR$/src/core/DefListener.java" />
         <option value="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
         <option value="$PROJECT_DIR$/test.cmm" />
-        <option value="$PROJECT_DIR$/src/IO/LLVMIO.java" />
         <option value="$PROJECT_DIR$/src/IO/ConsoleIO.java" />
-        <option value="$PROJECT_DIR$/src/core/Interpreter.java" />
         <option value="$PROJECT_DIR$/src/GUI/SyntaxHL.java" />
-        <option value="$PROJECT_DIR$/src/GUI/MainGui.java" />
         <option value="$PROJECT_DIR$/src/GUI/coloringrun.java" />
         <option value="$PROJECT_DIR$/src/GUI/IoInput.java" />
         <option value="$PROJECT_DIR$/src/GUI/LineNumListen.java" />
         <option value="$PROJECT_DIR$/src/GUI/onefile.java" />
         <option value="$PROJECT_DIR$/src/GUI/show_irc.java" />
+        <option value="$PROJECT_DIR$/src/core/Interpreter.java" />
+        <option value="$PROJECT_DIR$/src/core/DefListener.java" />
+        <option value="$PROJECT_DIR$/src/core/RuntimeVisitor.java" />
+        <option value="$PROJECT_DIR$/src/GUI/MainGui.java" />
+        <option value="$PROJECT_DIR$/src/IO/LLVMIO.java" />
       </list>
     </option>
   </component>
@@ -911,20 +920,21 @@
       <workItem from="1483458260570" duration="4418000" />
       <workItem from="1483463228230" duration="705000" />
       <workItem from="1483464186607" duration="864000" />
-      <workItem from="1483496583838" duration="561000" />
+      <workItem from="1483496583838" duration="3165000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123256000" />
+    <option name="totallyTimeSpent" value="125860000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="226" y="23" width="1214" height="810" extended-state="1" />
+    <frame x="226" y="23" width="1214" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32451254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -937,7 +947,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22098976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33476394" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.334471" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39693594" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -946,7 +956,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32772276" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -994,7 +1003,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1140,16 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/DefListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/GlobalSymbolList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1204,14 +1203,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="94" column="0" selection-start-line="42" selection-start-column="4" selection-end-line="94" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/antlr/cmmBaseVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1237,14 +1228,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2370">
           <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5550">
-          <caret line="377" column="70" selection-start-line="377" selection-start-column="70" selection-end-line="377" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -1281,26 +1264,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="117" column="7" selection-start-line="101" selection-start-column="4" selection-end-line="117" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-609">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IO/ConsoleIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1308,14 +1271,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1369,10 +1324,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3234">
+          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5220">
+          <caret line="377" column="70" selection-start-line="377" selection-start-column="70" selection-end-line="377" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-236">
+          <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/DefListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="211" column="21" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="460" column="0" selection-start-line="460" selection-start-column="0" selection-end-line="460" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/show_irc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+        <state relative-caret-position="195">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3323#3331#0" expanded="true" />
@@ -1380,11 +1377,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3234">
-          <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        <state relative-caret-position="45">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="116" column="30" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

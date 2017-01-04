@@ -71,18 +71,25 @@ public class Interpreter {
 
             // 引用计算阶段改为visitor的方式
             RuntimeVisitor RuntimeVisitor = new RuntimeVisitor(defListener.globals,
-                    defListener.scopes,
+                    defListener.symbolList,
                     consoleIo,llvmIO);
             RuntimeVisitor.visit(parseTree);
            // RuntimeVisitor.
             parser.reset();
             //=================LLVM IR生成======================
-            DefListener llvmListener = new DefListener(consoleIo,llvmIO);
-            walker.walk(llvmListener,parseTree);
-            LLVMVisitor llvmVisitor = new LLVMVisitor(llvmListener.globals,
-                        llvmListener.scopes,
-                        consoleIo,llvmIO);
-            llvmVisitor.visit(parseTree);
+            if(defListener.defSucOrNot&&RuntimeVisitor.runSucOrNot) {
+                DefListener llvmListener = new DefListener(consoleIo, llvmIO);
+                walker.walk(llvmListener, parseTree);
+                LLVMVisitor llvmVisitor = new LLVMVisitor(llvmListener.globals,
+                        llvmListener.symbolList,
+                        consoleIo, llvmIO);
+                llvmVisitor.visit(parseTree);
+            }
+            else {
+                consoleIo.output("ERROR OCCOURED, LLVM IRCODE WILL NOT GENERATE.");
+            }
+
+
         }catch (Exception e){
             consoleIo.output(e.getMessage());
             if(Constant.LLVM){
