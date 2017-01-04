@@ -1,49 +1,20 @@
 package GUI;
 
-import java.awt.EventQueue;
-import core.Interpreter;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import GUI.onefile;
 import IO.ConsoleIO;
 import IO.LLVMIO;
-import java.awt.SystemColor;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.Border;
+import core.Interpreter;
 
-import java.awt.Window.Type;
-import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
-import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /*
  *  jammie luo
@@ -61,7 +32,7 @@ public class MainGui {
 	ConsoleIO lexIO = null;
 	ConsoleIO consoleIO = null;
 	LLVMIO llvmIO = null;
-	// ����ÿһ���ļ����������
+	// 放置每一个文件对象的容器
 
 	/**
 	 * Launch the application.
@@ -84,8 +55,8 @@ public class MainGui {
 	 */
 	public MainGui() {
 		initialize();
-		// ��ʼ��IO
-		
+		// 初始化IO
+
 		// String code="";
 		// Compiler test = new Compiler(code,lexIO,consoleIO,llvmIO);
 		// test.run();
@@ -100,16 +71,16 @@ public class MainGui {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException e) {
-			// TODO �Զ����ɵ� catch ��
+			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO �Զ����ɵ� catch ��
+			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO �Զ����ɵ� catch ��
+			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		} catch (UnsupportedLookAndFeelException e) {
-			// TODO �Զ����ɵ� catch ��
+			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 		frmKtom = new JFrame();
@@ -123,12 +94,12 @@ public class MainGui {
 		toolBar.setBorderPainted(false);
 		toolBar.setBackground(new Color(24, 29, 34));
 		toolBar.setPreferredSize(new Dimension(300, 45));
-		
-		
+
+
 		frmKtom.getContentPane().add(toolBar, BorderLayout.NORTH);
-		
+
 		textArea = new JTextPane();
-	    JScrollPane scrollio = new JScrollPane(textArea);
+		JScrollPane scrollio = new JScrollPane(textArea);
 		ConsoleIO lexIO = new ConsoleIO(textArea);
 		ConsoleIO consoleIO = new ConsoleIO(textArea);
 		LLVMIO llvmIO = new LLVMIO(textArea);
@@ -141,7 +112,7 @@ public class MainGui {
 		scrollio.setPreferredSize(new Dimension(300, 200));
 		frmKtom.getContentPane().add(scrollio, BorderLayout.SOUTH);
 
-		// �˵�������
+		// 菜单栏代码
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(UIManager.getColor("TextPane.disabledBackground"));
 		menuBar.setBorderPainted(false);
@@ -157,7 +128,7 @@ public class MainGui {
 				// open action listener
 				JFileChooser jfc = new JFileChooser();
 				jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-				jfc.showDialog(new JLabel(), "ѡ��txt�ļ�");
+				jfc.showDialog(new JLabel(), "选择txt文件");
 				if (jfc.getSelectedFile() != null) {
 
 					File file = jfc.getSelectedFile();
@@ -205,7 +176,7 @@ public class MainGui {
 					else{
 						clicktap(button, files.indexOf(onefile));
 					}
-					
+
 				}
 			}
 		});
@@ -216,9 +187,9 @@ public class MainGui {
 				if(carefile.save(carefile.path)){
 					JOptionPane.showMessageDialog(frmKtom, "save success");
 				}else{
-					JOptionPane.showMessageDialog(frmKtom, "save fail,���α�����ʹ�����Ϊ");
+					JOptionPane.showMessageDialog(frmKtom, "save fail,初次保存请使用另存为");
 				}
-				
+
 				// save
 			}
 		});
@@ -229,7 +200,7 @@ public class MainGui {
 				//select window
 				JFileChooser jfc = new JFileChooser();
 				jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				jfc.showDialog(new JLabel(), "ѡ���ļ���");
+				jfc.showDialog(new JLabel(), "选择文件夹");
 				if (jfc.getSelectedFile() != null) {
 					//System.out.println(jfc.getSelectedFile().getAbsolutePath());
 					String pathtosave =jfc.getSelectedFile().getAbsolutePath();
@@ -251,10 +222,10 @@ public class MainGui {
 				onefile file = new onefile(frmKtom, "new file.cmm");
 				files.add(file);
 				file.init_gui();
-				
-				
+
+
 				JButton button = new JButton(file.filename);
-				
+
 				button.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						clicktap(button, files.indexOf(file));
@@ -279,7 +250,7 @@ public class MainGui {
 				else{
 					clicktap(button, files.indexOf(file));
 				}
-				
+
 			}
 		});
 		menu.add(menuItem_3);
@@ -337,15 +308,15 @@ public class MainGui {
 				menuItem_6.setEnabled(false);
 				menuItem_7.setEnabled(true);
 				//run create ir code
-				 //Compiler test = new Compiler(carefile.getcode(),lexIO,consoleIO,llvmIO);
-				 //test.run();
+				//Compiler test = new Compiler(carefile.getcode(),lexIO,consoleIO,llvmIO);
+				//test.run();
 				// llvmIO.print(llvmIO);
 //				consoleIO.output("hi");
 //				llvmIO.output("llvm");
 //				llvmIO.print(llvmIO);
 //				consoleIO.input();
-				 Interpreter test = new Interpreter(carefile.getcode(),lexIO,consoleIO,llvmIO);
-				 test.run();
+				Interpreter test = new Interpreter(carefile.getcode(),lexIO,consoleIO,llvmIO);
+				test.run();
 				menuItem_6.setEnabled(true);
 				menuItem_7.setEnabled(false);
 				carefile.setEnedit();
@@ -353,8 +324,8 @@ public class MainGui {
 			}
 		});
 		menu_1.add(menuItem_6);
-		
-		
+
+
 		menuItem_7.setEnabled(false);
 		menu_1.add(menuItem_7);
 		JMenu menu_2 = new JMenu("\u5E2E\u52A9");
@@ -365,7 +336,7 @@ public class MainGui {
 		frmKtom.setBounds(100, 100, 1024, 768);
 		frmKtom.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// װ���ļ����ڶ���
+		// 装载文件窗口对象
 		files = new ArrayList<onefile>();
 		if (files.size() == 0) {
 			onefile file0 = new onefile(frmKtom, "new file.cmm");
@@ -373,9 +344,9 @@ public class MainGui {
 			files.add(file0);
 		}
 
-		// ��ʾ����
+		// 显示窗口
 		files.get(0).init_gui();
-		// ��ʾ��ǩҳ��
+		// 显示标签页栏
 		JButton button1 = new JButton(files.get(0).filename);
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

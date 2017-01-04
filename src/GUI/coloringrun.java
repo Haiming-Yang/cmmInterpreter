@@ -18,7 +18,7 @@ public class coloringrun implements Runnable{
 
 	public void run() {
 		try {
-			// ������Ƕ��ַ�������ɫ
+			// 这里就是对字符进行着色
 			doc.setCharacterAttributes(pos, len, style, true);
 		} catch (Exception e) {}
 	}

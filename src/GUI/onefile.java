@@ -1,24 +1,9 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.SystemColor;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.io.*;
 
 public class onefile {
 	public String filename;
@@ -29,19 +14,19 @@ public class onefile {
 	private JTextPane lines = new JTextPane();
 	private JScrollPane scroll2 = new JScrollPane(this.lines);
 	private JFrame Jrame_to_set = null;
-	
-	
+
+
 	onefile(JFrame frame,String filename){
 		this.Jrame_to_set = frame;
 		this.filename = filename;
 	}
-	
+
 	onefile(JFrame frame,String filename,String code){
 		this.Jrame_to_set = frame;
 		this.filename = filename;
 		this.code = code;
 	}
-	
+
 	public void init_gui(){
 		editorPane.setBackground(new  Color(14, 17, 18));
 		editorPane.setForeground(new Color(186, 190, 189));
@@ -71,63 +56,63 @@ public class onefile {
 		scroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		scroll2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.Jrame_to_set.getContentPane().add(scroll2, BorderLayout.WEST);
-		
-		
+
+
 	}
-	
+
 	public void setVisible(){
 		scroll.setVisible(true);
 		scroll2.setVisible(true);
 	}
-	
+
 	public void setUnVisable(){
 		scroll.setVisible(false);
 		scroll2.setVisible(false);
-		
-		
+
+
 	}
-	
+
 	public void revalidate(){
 		scroll.revalidate();
 		scroll2.revalidate();
 	}
-	
+
 	/*
-	 * sava other place 
+	 * sava other place
 	 */
 	public boolean save(String path) {
 		if(path == null){
 			return false;
 		}
 		try {
-	            File file = new File(path);
-	            if(!file.exists()){
-	            	System.out.println(path);
-	                file.createNewFile();
-	            }
-	            PrintStream ps = new PrintStream(new FileOutputStream(file));
-	            ps.println(editorPane.getText());// ���ļ���д���ַ���
-	            ps.close();
-	            return true;
-	    } catch (FileNotFoundException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	            return false;
-	    } catch (IOException e) {
-			// TODO �Զ����ɵ� catch ��
+			File file = new File(path);
+			if(!file.exists()){
+				System.out.println(path);
+				file.createNewFile();
+			}
+			PrintStream ps = new PrintStream(new FileOutputStream(file));
+			ps.println(editorPane.getText());// 往文件里写入字符串
+			ps.close();
+			return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
+
 	public String getcode(){
 		return this.editorPane.getText();
 	}
-	
+
 	public void setUnedit(){
 		this.editorPane.setEnabled(false);
 	}
-	
+
 	public void setEnedit(){
 		this.editorPane.setEnabled(true);
 	}
