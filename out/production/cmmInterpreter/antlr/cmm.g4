@@ -3,7 +3,7 @@ options { tokenVocab=CMMLexer; }
 
 
 
-program : (stmt)+ ; // 程序，由语句组成
+program : (stmt)+ ;
 stmt :  var_decl
 	 |  if_stmt
 	 |  while_stmt
@@ -12,7 +12,7 @@ stmt :  var_decl
 	 |  read_stmt
 	 |  write_stmt
 	 |  stmt_block
-	 ;   //语句
+	 ;
 
 
 stmt_block : LBigBracket (stmt)* RBigBracket ;      //语句块

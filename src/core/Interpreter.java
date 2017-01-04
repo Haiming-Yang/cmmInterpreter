@@ -92,9 +92,9 @@ public class Interpreter {
 
         }catch (Exception e){
             consoleIo.output(e.getMessage());
-            if(Constant.LLVM){
+
                 e.printStackTrace();
-            }
+
         }
 
 

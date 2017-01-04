@@ -33,7 +33,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
     public ReturnVal visitProgram(cmmParser.ProgramContext ctx) {
         currentSymbolList = globals;
         super.visitProgram(ctx);
-        if(Constant.LLVM) {
+        if(true) {
             llvmIO.output("ret i32 0\n" +
                     "}" );
             llvmIO.output(0,"define i32 @main() #0 {\n"+
@@ -64,13 +64,6 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
         return null;
     }
 
-    @Override
-    public  ReturnVal visitVar_decl(cmmParser.Var_declContext ctx){
-        if(flag.getType()==Type.breakT){
-            return  null;
-        }
-        return  null;
-    }
 
     @Override
     public ReturnVal visitDecl_assign(cmmParser.Decl_assignContext ctx) {
@@ -150,7 +143,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
             /**
              * 数组只声明不赋值的情况下，生成IR Code
              */
-            if(Constant.LLVM){
+            if(true){
                 if(typeStr.equals("int")) {
                     llvmIO.selfAddSSA();
                     llvmIO.output("%" + llvmIO.getSSA() + " = alloca [" + size + "x i32], align 16");
@@ -171,7 +164,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
 
 
             //IR生成 普通变量声明
-            if(Constant.LLVM){
+            if(true){
                 if(typeStr.equals("int")) {
                     llvmIO.selfAddSSA();
                     llvmIO.output(
@@ -200,7 +193,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
             // 在当前作用域内定义，这里往符号表里只是添加了变量名和类型，没有值
 
 
-            if(Constant.LLVM){
+            if(true){
                 if(typeStr.equals("int")) {
                     if(value.getValue() instanceof  Integer) {
                         llvmIO.selfAddSSA();
@@ -303,7 +296,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
                     if(0 <= varIndex && varIndex < varArray.length){
                         if(value.getValue() instanceof  Integer){
                             varArray[varIndex] = (Integer) value.getValue();
-                            if(Constant.LLVM){
+                            if(true){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
                                 llvmIO.selfAddSSA();
@@ -337,7 +330,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
                     if(0 <= varIndex && varIndex < varArray.length){
                         if(value.getValue() instanceof  Double){
                             varArray[varIndex] = (Double) value.getValue();
-                            if(Constant.LLVM){
+                            if(true){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
                                 llvmIO.selfAddSSA();
@@ -349,7 +342,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
                             }
                         }else if(value.getValue() instanceof  Integer){
                             varArray[varIndex] = (Integer) value.getValue();
-                            if(Constant.LLVM){
+                            if(true){
                                 int arraySSACode = llvmIO.varMap.get(varName);
                                 int size = varArray.length;
                                 llvmIO.selfAddSSA();
@@ -397,7 +390,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
 
 
                 symbol.setValue(value.getValue());
-                if(Constant.LLVM){
+                if(true){
                     int varSSACode = llvmIO.varMap.get(varName);
                     //int size = varArray.length;
                     if(symbol.getType() == Type.tInt){
@@ -516,7 +509,7 @@ public class LLVMVisitor extends cmmBaseVisitor<ReturnVal> {
         ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
         Object value = computeVisitor.visit(ctx.expr()).getValue();
         // io.output(value);
-        if(Constant.LLVM){
+        if(true){
             if(value instanceof  Integer) {
                 llvmIO.setIntOrNot();
                 llvmIO.selfAddSSA();

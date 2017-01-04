@@ -2,13 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35247498-5f30-4a66-82e4-79a721072108" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output.ll" afterPath="$PROJECT_DIR$/output.ll" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Constant.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/core/Constant.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$10.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$10.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2$1.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$3.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$4.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5$1.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$6.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$7.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$8.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$9.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/GUI/MainGui.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Interpreter.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/Interpreter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/LLVMVisitor.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/LLVMVisitor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/core/RuntimeVisitor.class" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/core/RuntimeVisitor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmm.g4" afterPath="$PROJECT_DIR$/out/production/cmmInterpreter/antlr/cmm.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/MainGui.java" afterPath="$PROJECT_DIR$/src/GUI/MainGui.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/SyntaxHL.java" afterPath="$PROJECT_DIR$/src/GUI/SyntaxHL.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IO/LLVMIO.java" afterPath="$PROJECT_DIR$/src/IO/LLVMIO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/antlr/cmm.g4" afterPath="$PROJECT_DIR$/src/antlr/cmm.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Interpreter.java" afterPath="$PROJECT_DIR$/src/core/Interpreter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/LLVMVisitor.java" afterPath="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/RuntimeVisitor.java" afterPath="$PROJECT_DIR$/src/core/RuntimeVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/Type.java" afterPath="$PROJECT_DIR$/src/core/Type.java" />
     </list>
     <ignored path="cmmInterpreter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,23 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LLVMIO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
+      <file leaf-file-name="SymbolList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/core/SymbolList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Type.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/Type.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -60,8 +65,8 @@
       <file leaf-file-name="Interpreter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+            <state relative-caret-position="341">
+              <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,11 +74,68 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SyntaxHL.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
+      <file leaf-file-name="JAVA/core" pinned="false" current-in-tab="false">
+        <entry file="uml://JAVA/core">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>core</OriginalElement>
+              <nodes>
+                <node x="-618.3333333333333" y="1404.0">core.Type</node>
+                <node x="-634.9999999999999" y="1078.3333333333333">core.ComputeVisitor</node>
+                <node x="-105.99999999999989" y="796.6666666666669">core.LocalSymbolList</node>
+                <node x="-393.66666666666663" y="1527.3333333333333">core.TokenDictionary</node>
+                <node x="-633.3333333333333" y="35.0">core.LLVMVisitor</node>
+                <node x="-8.333333333333258" y="1405.0">core.Arith</node>
+                <node x="-623.9999999999998" y="1680.3333333333328">core.DefListener</node>
+                <node x="-62.33333333333326" y="1085.0">core.Interpreter</node>
+                <node x="-1.0" y="60.0">core.RuntimeVisitor</node>
+                <node x="-21.66666666666663" y="1716.9999999999998">core.Symbol</node>
+                <node x="289.0000000000002" y="788.3333333333335">core.ReturnVal</node>
+                <node x="-374.66666666666663" y="1392.3333333333333">core.IOInterface</node>
+                <node x="-587.4166666666665" y="645.3333333333334">core.SymbolList</node>
+                <node x="-100.0" y="925.0">core.GlobalSymbolList</node>
+                <node x="-617.9166666666666" y="822.0">core.BaseSymbolList</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="core.BaseSymbolList" target="core.SymbolList">
+                  <point x="0.0" y="-104.0" />
+                  <point x="0.0" y="70.0" />
+                </edge>
+                <edge source="core.GlobalSymbolList" target="core.BaseSymbolList">
+                  <point x="0.0" y="-37.5" />
+                  <point x="-179.66666666666663" y="980.0" />
+                  <point x="-198.66666666666652" y="986.6666666666666" />
+                  <point x="-99.25" y="104.0" />
+                </edge>
+                <edge source="core.LocalSymbolList" target="core.BaseSymbolList">
+                  <point x="0.0" y="-37.5" />
+                  <point x="-87.50000000000011" y="836.6666666666666" />
+                  <point x="-178.4999999999999" y="840.0" />
+                  <point x="99.25" y="104.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="302.99999999999994" y="1459.0" />
+              <SelectedNodes>
+                <node>core.ReturnVal</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Fields</Category>
+                <Category>Constructors</Category>
+                <Category>Methods</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cmm.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/antlr/cmm.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3446">
-              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+            <state relative-caret-position="315">
+              <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -82,9 +144,11 @@
       <file leaf-file-name="MainGui.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="343" column="11" selection-start-line="343" selection-start-column="11" selection-end-line="343" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,22 +156,18 @@
       <file leaf-file-name="DefListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/DefListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3030">
-              <caret line="211" column="21" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#887#888#0" expanded="false" />
-                <element signature="e#939#940#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="165">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RuntimeVisitor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RuntimeVisitor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="521" column="0" selection-start-line="521" selection-start-column="0" selection-end-line="521" selection-end-column="0" />
+            <state relative-caret-position="564">
+              <caret line="501" column="0" selection-start-line="501" selection-start-column="0" selection-end-line="501" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -116,34 +176,49 @@
       <file leaf-file-name="LLVMVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="671" column="0" selection-start-line="671" selection-start-column="0" selection-end-line="671" selection-end-column="0" />
-              <folding>
-                <element signature="e#578#579#0" expanded="true" />
-                <element signature="e#607#608#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComputeVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/core/ComputeVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1646">
-              <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
+            <state relative-caret-position="128">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show_irc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/show_irc.java">
+      <file leaf-file-name="cmmLexer.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/antlr/cmmLexer.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JAVA/core.BaseSymbolList" pinned="false" current-in-tab="false">
+        <entry file="uml://JAVA/core.BaseSymbolList">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>core.BaseSymbolList</OriginalElement>
+              <nodes>
+                <node x="60.5" y="0.0">core.SymbolList</node>
+                <node x="0.0" y="190.0">core.BaseSymbolList</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="core.BaseSymbolList" target="core.SymbolList">
+                  <point x="0.0" y="-104.0" />
+                  <point x="0.0" y="70.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.0" x="-264.0" y="148.0" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Fields</Category>
+                <Category>Constructors</Category>
+                <Category>Methods</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
             </state>
           </provider>
         </entry>
@@ -187,7 +262,6 @@
         <option value="$PROJECT_DIR$/src/core/Arith.java" />
         <option value="$PROJECT_DIR$/src/core/Symbol.java" />
         <option value="$PROJECT_DIR$/src/antlr/cmmParser.g4" />
-        <option value="$PROJECT_DIR$/src/antlr/cmm.g4" />
         <option value="$PROJECT_DIR$/src/core/Compiler.java" />
         <option value="$PROJECT_DIR$/src/core/DefPhaseListener.java" />
         <option value="$PROJECT_DIR$/src/core/ExprComputeVisitor.java" />
@@ -203,14 +277,15 @@
         <option value="$PROJECT_DIR$/src/GUI/LineNumListen.java" />
         <option value="$PROJECT_DIR$/src/GUI/onefile.java" />
         <option value="$PROJECT_DIR$/src/GUI/show_irc.java" />
-        <option value="$PROJECT_DIR$/src/core/Interpreter.java" />
-        <option value="$PROJECT_DIR$/src/core/DefListener.java" />
         <option value="$PROJECT_DIR$/src/core/Type.java" />
-        <option value="$PROJECT_DIR$/src/core/RuntimeVisitor.java" />
-        <option value="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
         <option value="$PROJECT_DIR$/src/IO/LLVMIO.java" />
-        <option value="$PROJECT_DIR$/src/GUI/MainGui.java" />
         <option value="$PROJECT_DIR$/src/GUI/SyntaxHL.java" />
+        <option value="$PROJECT_DIR$/src/core/Interpreter.java" />
+        <option value="$PROJECT_DIR$/src/antlr/cmm.g4" />
+        <option value="$PROJECT_DIR$/src/GUI/MainGui.java" />
+        <option value="$PROJECT_DIR$/src/core/DefListener.java" />
+        <option value="$PROJECT_DIR$/src/core/LLVMVisitor.java" />
+        <option value="$PROJECT_DIR$/src/core/RuntimeVisitor.java" />
       </list>
     </option>
   </component>
@@ -228,10 +303,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="226" />
-    <option name="y" value="23" />
-    <option name="width" value="1214" />
-    <option name="height" value="810" />
+    <option name="x" value="1920" />
+    <option name="y" value="424" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -258,8 +333,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -293,10 +368,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IO" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -349,6 +420,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="antlr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -385,11 +460,13 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="$PROJECT_DIR$/src/antlr/cmmParser.g4::/auto-gen" value="false" />
     <property name="$PROJECT_DIR$/src/antlr/cmmParser.g4::/gen-listener" value="true" />
     <property name="$PROJECT_DIR$/src/antlr/cmmParser.g4::/gen-visitor" value="true" />
+    <property name="FullScreen" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -906,33 +983,35 @@
       <workItem from="1483464186607" duration="864000" />
       <workItem from="1483496583838" duration="3165000" />
       <workItem from="1483523607910" duration="1163000" />
+      <workItem from="1483525583894" duration="5669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127023000" />
+    <option name="totallyTimeSpent" value="132692000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="226" y="23" width="1214" height="810" extended-state="0" />
+    <frame x="1920" y="424" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32451254" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4206128" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42048192" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22098976" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18526466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32771084" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.334471" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39693594" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -943,7 +1022,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32772276" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -997,36 +1075,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gen/antlr/cmmLexer.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/antlr/cmmParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/antlr4-runtime-4.6.jar!/org/antlr/v4/runtime/Token.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/antlr/cmmLexer.tokens" />
-    <entry file="jar://$PROJECT_DIR$/lib/antlr4-runtime-4.6.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/antlr/cmmListener.java" />
     <entry file="file://$PROJECT_DIR$/gen/antlr/cmmBaseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2760">
@@ -1104,29 +1152,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/TokenDictionary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-195">
-          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/antlr/cmm.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/GlobalSymbolList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1135,21 +1160,6 @@
             <element signature="e#269#270#0" expanded="false" />
             <element signature="e#301#302#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/SymbolList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/BaseSymbolList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1210,28 +1220,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/antlr/cmmLexer.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.cmm" />
-    <entry file="file://$PROJECT_DIR$/src/core/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IO/ConsoleIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1241,7 +1236,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1251,7 +1246,7 @@
         <state relative-caret-position="-639">
           <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1261,7 +1256,7 @@
         <state relative-caret-position="75">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1271,7 +1266,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1281,29 +1276,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/DefListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3030">
-          <caret line="211" column="21" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
-          <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#887#888#0" expanded="false" />
-            <element signature="e#939#940#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1313,33 +1286,14 @@
         <state relative-caret-position="60">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="521" column="0" selection-start-line="521" selection-start-column="0" selection-end-line="521" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="671" column="0" selection-start-line="671" selection-start-column="0" selection-end-line="671" selection-end-column="0" />
-          <folding>
-            <element signature="e#578#579#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/ComputeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1646">
+        <state relative-caret-position="2880">
           <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
           <folding />
         </state>
@@ -1347,7 +1301,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/IO/LLVMIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="810">
           <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1363,18 +1317,307 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="343" column="11" selection-start-line="343" selection-start-column="11" selection-end-line="343" selection-end-column="11" />
+        <state relative-caret-position="15">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/SyntaxHL.java">
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="335.0" y="385.0">com</node>
+            <node x="0.0" y="310.0">netscape</node>
+            <node x="190.0" y="310.0">oracle</node>
+            <node x="0.0" y="535.0">org</node>
+            <node x="7.5" y="160.0">IO</node>
+            <node x="0.0" y="0.0">antlr</node>
+            <node x="198.0" y="235.0">resources</node>
+            <node x="163.0" y="0.0">toolbarButtonGraphics</node>
+            <node x="159.0" y="460.0">sun</node>
+            <node x="0.0" y="235.0">META-INF</node>
+            <node x="155.0" y="535.0">jdk</node>
+            <node x="1.0" y="80.0">core</node>
+            <node x="0.0" y="385.0">apple</node>
+            <node x="0.0" y="460.0">java</node>
+            <node x="168.0" y="385.0">javax</node>
+            <node x="316.0" y="460.0">GUI</node>
+            <node x="362.0" y="310.0">javafx</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="IO" target="core">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="core" target="antlr">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-325.0" y="161.0" />
+          <SelectedNodes>
+            <node>com</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Constant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3446">
-          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+        <state relative-caret-position="75">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/TokenDictionary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/core.Arith">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>core.Arith</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">core.Arith</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-297.0" y="-132.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Properties</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/core.ReturnVal">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>core.ReturnVal</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">core.ReturnVal</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-282.5" y="-132.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/BaseSymbolList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/core.BaseSymbolList">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>core.BaseSymbolList</OriginalElement>
+          <nodes>
+            <node x="60.5" y="0.0">core.SymbolList</node>
+            <node x="0.0" y="190.0">core.BaseSymbolList</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="core.BaseSymbolList" target="core.SymbolList">
+              <point x="0.0" y="-104.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-264.0" y="148.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/core.Symbol">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>core.Symbol</OriginalElement>
+          <nodes>
+            <node x="" y="">core.Symbol</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="40.0" y="15.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Inner Classes</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Symbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/SymbolList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/core">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>core</OriginalElement>
+          <nodes>
+            <node x="-618.3333333333333" y="1404.0">core.Type</node>
+            <node x="-634.9999999999999" y="1078.3333333333333">core.ComputeVisitor</node>
+            <node x="-105.99999999999989" y="796.6666666666669">core.LocalSymbolList</node>
+            <node x="-393.66666666666663" y="1527.3333333333333">core.TokenDictionary</node>
+            <node x="-633.3333333333333" y="35.0">core.LLVMVisitor</node>
+            <node x="-8.333333333333258" y="1405.0">core.Arith</node>
+            <node x="-623.9999999999998" y="1680.3333333333328">core.DefListener</node>
+            <node x="-62.33333333333326" y="1085.0">core.Interpreter</node>
+            <node x="-1.0" y="60.0">core.RuntimeVisitor</node>
+            <node x="-21.66666666666663" y="1716.9999999999998">core.Symbol</node>
+            <node x="289.0000000000002" y="788.3333333333335">core.ReturnVal</node>
+            <node x="-374.66666666666663" y="1392.3333333333333">core.IOInterface</node>
+            <node x="-587.4166666666665" y="645.3333333333334">core.SymbolList</node>
+            <node x="-100.0" y="925.0">core.GlobalSymbolList</node>
+            <node x="-617.9166666666666" y="822.0">core.BaseSymbolList</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="core.BaseSymbolList" target="core.SymbolList">
+              <point x="0.0" y="-104.0" />
+              <point x="0.0" y="70.0" />
+            </edge>
+            <edge source="core.GlobalSymbolList" target="core.BaseSymbolList">
+              <point x="0.0" y="-37.5" />
+              <point x="-179.66666666666663" y="980.0" />
+              <point x="-198.66666666666652" y="986.6666666666666" />
+              <point x="-99.25" y="104.0" />
+            </edge>
+            <edge source="core.LocalSymbolList" target="core.BaseSymbolList">
+              <point x="0.0" y="-37.5" />
+              <point x="-87.50000000000011" y="836.6666666666666" />
+              <point x="-178.4999999999999" y="840.0" />
+              <point x="99.25" y="104.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="302.99999999999994" y="1459.0" />
+          <SelectedNodes>
+            <node>core.ReturnVal</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/antlr/cmmLexer.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/DefListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/MainGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="97" column="34" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/antlr/cmm.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/LLVMVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Interpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="97" column="9" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/RuntimeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="501" column="0" selection-start-line="501" selection-start-column="0" selection-end-line="501" selection-end-column="0" />
           <folding />
         </state>
       </provider>

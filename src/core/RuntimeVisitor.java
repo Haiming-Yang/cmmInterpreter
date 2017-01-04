@@ -42,13 +42,6 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
         currentSymbolList = currentSymbolList.getEnclosingSymbolList();
         return null;
     }
-    @Override
-    public  ReturnVal visitVar_decl(cmmParser.Var_declContext ctx){
-        if(flag.getType()==Type.breakT){
-            return  null;
-        }
-        return  null;
-    }
 
     @Override
     public ReturnVal visitDecl_assign(cmmParser.Decl_assignContext ctx) {
@@ -506,6 +499,8 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                 //flag.setType(Type.breakF);
                 break;
             }
+
+
         }
 
         return null;

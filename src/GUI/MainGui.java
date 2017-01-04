@@ -87,6 +87,9 @@ public class MainGui {
 			e.printStackTrace();
 		}
 		frmKtom = new JFrame();
+		//frmKtom.setIconImage(new ImageIcon(getClass.getResource("/icon.gif")).getImage());
+		frmKtom.setIconImage(Toolkit.getDefaultToolkit().getImage("icon.gif"));
+
 		frmKtom.setResizable(false);
 		frmKtom.getContentPane().setBackground(SystemColor.windowBorder);
 		frmKtom.getContentPane().setLayout(new BorderLayout(0, 0));
