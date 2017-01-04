@@ -78,9 +78,6 @@ public class LLVMIO implements IOInterface {
 
     }
 
-    public LLVMIO(JTextPane textarea) {
-        this.textArea = textarea;
-    }
 
     public void setSSA(int a) {
         SSACode = a;

@@ -8,5 +8,7 @@ public enum Type {
     tDouble,
     tIntArray,
     tRealArray,
-    tBool
+    tBool,
+    breakT,
+    breakF
 }

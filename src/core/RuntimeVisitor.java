@@ -14,6 +14,8 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
     private IOInterface io;
     private LLVMIO llvmIO;
     public  boolean runSucOrNot = true;
+    private ReturnVal flag=new ReturnVal(Type.breakF,"a");
+
     ParseTreeProperty<SymbolList> symbolList;
     GlobalSymbolList globals;
     SymbolList currentSymbolList;
@@ -40,10 +42,20 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
         currentSymbolList = currentSymbolList.getEnclosingSymbolList();
         return null;
     }
+    @Override
+    public  ReturnVal visitVar_decl(cmmParser.Var_declContext ctx){
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
+        return  null;
+    }
 
     @Override
     public ReturnVal visitDecl_assign(cmmParser.Decl_assignContext ctx) {
         Token token = ctx.Ident().getSymbol();
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         String varName = token.getText();
         Symbol symbol = currentSymbolList.resolve(varName);
         if(symbol == null){
@@ -99,6 +111,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
     @Override
     public ReturnVal visitAssign_stmt(cmmParser.Assign_stmtContext ctx) {
         super.visitAssign_stmt(ctx);
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
 
         if(ctx.var().Ident() == null){ // 数组
             Token token = ctx.var().array().Ident().getSymbol();
@@ -121,7 +136,7 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                 }else{ // 索引为表达式
 
                     ComputeVisitor indexComputeVisitor = new ComputeVisitor(currentSymbolList, io);
-                   // if(ctx.var().array().expr().getText())
+                    // if(ctx.var().array().expr().getText())
                     ReturnVal indexValue = indexComputeVisitor.visit(ctx.var().array().expr());
                     if(indexValue.getType() != Type.tInt){
                         runSucOrNot =false;
@@ -258,26 +273,26 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
                         }
                     }
                     else{
-                            if(value.getValue() instanceof Integer){
-                                Integer n = (Integer) value.getValue();
-                                Double dn = n.doubleValue();
-                                symbol.setValue(dn);
-                                io.output("WARNING: 隐式转换 <"
-                                        + token.getText()
-                                        + "> in line "
-                                        + token.getLine()
-                                        +":"
-                                        + token.getCharPositionInLine());
-                            }
-                            else{
-                                Double n = (Double)value.getValue();
-                                symbol.setValue(n);
-                            }
+                        if(value.getValue() instanceof Integer){
+                            Integer n = (Integer) value.getValue();
+                            Double dn = n.doubleValue();
+                            symbol.setValue(dn);
+                            io.output("WARNING: 隐式转换 <"
+                                    + token.getText()
+                                    + "> in line "
+                                    + token.getLine()
+                                    +":"
+                                    + token.getCharPositionInLine());
+                        }
+                        else{
+                            Double n = (Double)value.getValue();
+                            symbol.setValue(n);
+                        }
                     }
 
-                    }
                 }
             }
+        }
 
 
         return null;
@@ -286,6 +301,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
     @Override
     public ReturnVal visitRead_stmt(cmmParser.Read_stmtContext ctx) {
         super.visitRead_stmt(ctx);
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         Token token = null;
         if(ctx.Ident() == null){ // 数组
             token = ctx.array().Ident().getSymbol();
@@ -372,6 +390,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
     @Override
     public ReturnVal visitWrite_stmt(cmmParser.Write_stmtContext ctx) {
         super.visitWrite_stmt(ctx);
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         ComputeVisitor computeVisitor = new ComputeVisitor(currentSymbolList, io);
         Object value = computeVisitor.visit(ctx.expr()).getValue();
         io.output(value);
@@ -381,7 +402,10 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
     // ==========下面是if else的各种变种，为了减少判断，特地在文法了进行了拆分
 
     @Override
-    public ReturnVal visitI_S(cmmParser.I_SContext ctx) { // if stmt
+    public ReturnVal visitI_S(cmmParser.I_SContext ctx) {
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }// if stmt
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt());
         }
@@ -390,6 +414,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     @Override
     public ReturnVal visitI_SB(cmmParser.I_SBContext ctx) {
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt_block());
         }
@@ -398,6 +425,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     @Override
     public ReturnVal visitI_S_E_S(cmmParser.I_S_E_SContext ctx) {
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt(0));
         }else{
@@ -408,6 +438,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     @Override
     public ReturnVal visitI_S_E_SB(cmmParser.I_S_E_SBContext ctx) {
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt());
         }else{
@@ -418,6 +451,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     @Override
     public ReturnVal visitI_SB_E_S(cmmParser.I_SB_E_SContext ctx) {
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt_block());
         }else{
@@ -428,6 +464,9 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     @Override
     public ReturnVal visitI_SB_E_SB(cmmParser.I_SB_E_SBContext ctx) {
+        if(flag.getType()==Type.breakT){
+            return  null;
+        }
         if(isExprTrue(ctx.expr())){
             visit(ctx.stmt_block(0));
         }else{
@@ -450,12 +489,22 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     @Override
     public ReturnVal visitWhile_stmt(cmmParser.While_stmtContext ctx) {
+        int temp = 0;
 
         while (isExprTrue(ctx.expr())) {
             if(ctx.stmt() != null){ // while后面紧跟stmt
                 visit(ctx.stmt());
             }else{ // while后面紧跟stmt_block
                 visit(ctx.stmt_block());
+            }
+            if (flag.getType()==Type.breakT){
+                temp=1;
+                flag.setType(Type.breakF);
+
+            }
+            if (temp==1) {
+                //flag.setType(Type.breakF);
+                break;
             }
         }
 
@@ -464,7 +513,8 @@ public class RuntimeVisitor extends cmmBaseVisitor<ReturnVal> {
 
     @Override
     public ReturnVal visitBreak_stmt(cmmParser.Break_stmtContext ctx) {
-        return super.visitBreak_stmt(ctx);
+        flag.setType(Type.breakT);
+        return null;
     }
 
 

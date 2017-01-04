@@ -41,7 +41,7 @@ public class SyntaxHL implements DocumentListener{
 		Causewords.add("if");
 		Causewords.add("else");
 		Causewords.add("while");
-		Causewords.add("Break");
+		Causewords.add("break");
 		operator.add("=");
 		operator.add(";");
 		operator.add(",");

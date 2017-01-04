@@ -105,7 +105,7 @@ public class MainGui {
 		JScrollPane scrollio = new JScrollPane(textArea);
 		ConsoleIO lexIO = new ConsoleIO(textArea);
 		ConsoleIO consoleIO = new ConsoleIO(textArea);
-		LLVMIO llvmIO = new LLVMIO(textArea);
+
 		textArea.setForeground(Color.WHITE);
 		textArea.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		textArea.setEditable(false);
@@ -318,6 +318,7 @@ public class MainGui {
 //				llvmIO.output("llvm");
 //				llvmIO.print(llvmIO);
 //				consoleIO.input();
+				LLVMIO llvmIO = new LLVMIO();
 				Interpreter test = new Interpreter(carefile.getcode(),lexIO,consoleIO,llvmIO);
 				test.run();
 				menuItem_6.setEnabled(true);
@@ -335,6 +336,12 @@ public class MainGui {
 		menuBar.add(menu_2);
 		JMenuItem menuItem_8 = new JMenuItem("\u5173\u4E8E");
 		menu_2.add(menuItem_8);
+		menuItem_8.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frmKtom,"Kitom\nPowerd by Jammie Luo and Steve Yang.");
+			}
+		});
 		frmKtom.setTitle("Kitom");
 		frmKtom.setBounds(100, 100, 1024, 768);
 		frmKtom.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
